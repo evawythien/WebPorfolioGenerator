@@ -8,5 +8,6 @@
         public string UrlBackgroundImage { get; set; }
         public string FirstColor { get; set; }
         public string SecondColor { get; set; }
+        public Font Fuente { get; set; }
     }
 }
