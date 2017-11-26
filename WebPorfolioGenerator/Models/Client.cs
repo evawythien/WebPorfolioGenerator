@@ -1,16 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebPorfolioGenerator.Models
 {
+    [Table("Clients")]
     public class Client : User
     {
-        private int _id;
-        [Key]
-        public int ClientId
-        {
-            get { return _id; }
-        }
         public string BussinesName { get; set; }
-        public string PortfolioId { get; set; }
+
+        public int PortfolioId { get; set; }
+
+        public string PortfolioInfo { get; set; }
     }
 }

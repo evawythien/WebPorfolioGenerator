@@ -1,5 +1,3 @@
-using System;
-
 namespace WebPorfolioGenerator.Models
 {
     public class ErrorViewModel

@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebPorfolioGenerator.Models
 {
+    [Table("MenuItems")]
     public class MenuItem
     {
-        public int MenuId { get; set; }
+        [Key]
         public int MenuItemId { get; set; }
+
+        public int MenuId { get; set; }        
+
         public string MenuName { get; set; }
+
         public string Url { get; set; }
     }
 }

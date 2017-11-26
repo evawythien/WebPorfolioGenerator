@@ -1,16 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebPorfolioGenerator.Models
 {
+    [Table("Fonts")]
     public class Font
     {
+        [Key]
         public int Id { get; set; }
+
         public string FontName { get; set; }
+
         public string Link { get; set; }
+
         public string FontFamily { get; set; }
+
         public string Style { get; set; }
     }
 }
