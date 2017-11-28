@@ -9,6 +9,8 @@ namespace WebPorfolioGenerator.Models
 
         public int PortfolioId { get; set; }
 
+        public int EmployeeId { get; set; }
+
         public string PortfolioInfo { get; set; }
     }
 }

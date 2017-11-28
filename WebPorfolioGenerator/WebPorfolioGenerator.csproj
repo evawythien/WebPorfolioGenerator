@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Inic\" />
+    <Folder Include="Views\PortfolioOne\" />
     <Folder Include="Views\NewFolder\" />
   </ItemGroup>
 
