@@ -10,10 +10,17 @@ namespace WebPorfolioGenerator.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Login()
         {
+            ViewData["Message"] = "Login";
             return View();
         }
+
+        public IActionResult Index()
+        {
+            ViewData["Message"] = "Login";
+            return View();
+        }       
 
         public IActionResult About()
         {
