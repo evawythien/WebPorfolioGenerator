@@ -8,19 +8,19 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link  rel="stylesheet/less" type="text/css" href="~/css/estilosLess.less" />
-        <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet/less" type="text/css" href="~/css/Login.css" />
+        <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />        
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/estilosLess.less" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    @*<nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -41,13 +41,13 @@
                 </ul>
             </div>
         </div>
-    </nav>*@
+    </nav>
     <div class="container body-content">
         @RenderBody()
-        @*<hr />
+        <hr />
         <footer>
             <p>&copy; 2017 - WebPorfolioGenerator</p>
-        </footer>*@
+        </footer>
     </div>
 
     <environment include="Development">

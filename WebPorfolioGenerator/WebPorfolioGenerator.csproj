@@ -14,10 +14,4 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Inic\" />
-    <Folder Include="Views\PortfolioOne\" />
-    <Folder Include="Views\NewFolder\" />
-  </ItemGroup>
-
 </Project>

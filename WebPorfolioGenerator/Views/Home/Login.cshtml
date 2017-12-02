@@ -1,25 +1,22 @@
-﻿
+﻿@model WebPorfolioGenerator.Models.User
+@{
+    ViewData["Title"] = "Delete";
+}
+
 <div class="wrapper">
     <div class="container">
         <h1>Welcome</h1>
 
-        <form class="form">
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button type="submit" id="login-button">Login</button>
+        <form id="login"class="form">
+            <input class="col-md-12" type="text" placeholder="Username">
+            <input class="col-md-12" type="password" placeholder="Password">
+            <input class="col-md-12" type="button" value="GO!" id="login-button">
+        </form>
+
+        <form asp-action="GoNext">
+        <input type="hidden" asp-for="UserId" />
+        <input type="submit" value="GoNext" class="btn btn-default" /> |
+        <a asp-action="Index">GO!</a>
         </form>
     </div>
-
-    <ul class="bg-bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
 </div>
