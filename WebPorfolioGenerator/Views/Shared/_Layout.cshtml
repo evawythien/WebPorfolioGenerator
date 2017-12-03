@@ -16,7 +16,7 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Login.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
@@ -34,10 +34,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                
+                    <li><a asp-area="" asp-controller="Users" asp-action="Create">User list</a></li>
+                    <li><a asp-area="" asp-controller="Users" asp-action="Index">Portfolio list</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="UserList">UserList</a></li>
-                    <li><a asp-area="" asp-controller="Users" asp-action="Index">UserList</a></li>
                 </ul>
             </div>
         </div>
