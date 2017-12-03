@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebPorfolioGenerator.Models.Portfolio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PortfolioName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PortfolioSurname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UrlBackgroundImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstColor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SecondColor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FontId)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PortfolioName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PortfolioSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrlBackgroundImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FontId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PortfolioId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PortfolioId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PortfolioId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

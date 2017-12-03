@@ -1,0 +1,54 @@
+﻿@model WebPorfolioGenerator.Models.Portfolio
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Portfolio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PortfolioName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PortfolioName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PortfolioSurname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PortfolioSurname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UrlBackgroundImage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UrlBackgroundImage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstColor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstColor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondColor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SecondColor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FontId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FontId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PortfolioId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
