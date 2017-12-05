@@ -1,11 +1,8 @@
 ﻿@model WebPorfolioGenerator.Models.Portfolio
-
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create";  
 }
-
 <h2>Create</h2>
-
 <h4>Portfolio</h4>
 <hr />
 <div class="row">
@@ -37,7 +34,15 @@
                 <input type="color" asp-for="SecondColor" class="form-control" />
                 <span asp-validation-for="SecondColor" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6">   
+               
+                <select>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+              
                 <label asp-for="FontId" class="control-label"></label>
                 <input asp-for="FontId" class="form-control" />
                 <span asp-validation-for="FontId" class="text-danger"></span>
@@ -48,8 +53,6 @@
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
