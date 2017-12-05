@@ -9,7 +9,9 @@ namespace WebPorfolioGenerator.Models
         [Key]
         public int MenuItemId { get; set; }
 
-        public int MenuId { get; set; }        
+        public int MenuId { get; set; }
+
+        public int MenuOrder { get; set; }
 
         public string MenuName { get; set; }
 

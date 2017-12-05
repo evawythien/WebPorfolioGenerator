@@ -1,28 +1,31 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
 
 namespace WebPorfolioGenerator.Controllers
 {
-    public class PortfoliosController : Controller
+    public class MenuItemsController : Controller
     {
         private readonly WebPortfolioContext _context;
 
-        public PortfoliosController(WebPortfolioContext context)
+        public MenuItemsController(WebPortfolioContext context)
         {
             _context = context;
         }
 
-        // GET: Portfolios
+        // GET: MenuItems
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Portfolios.ToListAsync());
+            return View(await _context.MenuItems.ToListAsync());
         }
 
-        // GET: Portfolios/Details/5
+        // GET: MenuItems/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -30,39 +33,39 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var portfolio = await _context.Portfolios
-                .SingleOrDefaultAsync(m => m.PortfolioId == id);
-            if (portfolio == null)
+            var menuItem = await _context.MenuItems
+                .SingleOrDefaultAsync(m => m.MenuItemId == id);
+            if (menuItem == null)
             {
                 return NotFound();
             }
 
-            return View(portfolio);
+            return View(menuItem);
         }
 
-        // GET: Portfolios/Create
+        // GET: MenuItems/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Portfolios/Create
+        // POST: MenuItems/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PortfolioId,PortfolioName,PortfolioSurname,UrlBackgroundImage,FirstColor,SecondColor,FontId")] Portfolio portfolio)
+        public async Task<IActionResult> Create([Bind("MenuItemId,MenuId,MenuName,Url")] MenuItem menuItem)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(portfolio);
+                _context.Add(menuItem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(portfolio);
+            return View(menuItem);
         }
 
-        // GET: Portfolios/Edit/5
+        // GET: MenuItems/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -70,22 +73,22 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
-            if (portfolio == null)
+            var menuItem = await _context.MenuItems.SingleOrDefaultAsync(m => m.MenuItemId == id);
+            if (menuItem == null)
             {
                 return NotFound();
             }
-            return View(portfolio);
+            return View(menuItem);
         }
 
-        // POST: Portfolios/Edit/5
+        // POST: MenuItems/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PortfolioId,PortfolioName,PortfolioSurname,UrlBackgroundImage,FirstColor,SecondColor,FontId")] Portfolio portfolio)
+        public async Task<IActionResult> Edit(int id, [Bind("MenuItemId,MenuId,MenuName,Url")] MenuItem menuItem)
         {
-            if (id != portfolio.PortfolioId)
+            if (id != menuItem.MenuItemId)
             {
                 return NotFound();
             }
@@ -94,12 +97,12 @@ namespace WebPorfolioGenerator.Controllers
             {
                 try
                 {
-                    _context.Update(portfolio);
+                    _context.Update(menuItem);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PortfolioExists(portfolio.PortfolioId))
+                    if (!MenuItemExists(menuItem.MenuItemId))
                     {
                         return NotFound();
                     }
@@ -110,10 +113,10 @@ namespace WebPorfolioGenerator.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(portfolio);
+            return View(menuItem);
         }
 
-        // GET: Portfolios/Delete/5
+        // GET: MenuItems/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -121,30 +124,30 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var portfolio = await _context.Portfolios
-                .SingleOrDefaultAsync(m => m.PortfolioId == id);
-            if (portfolio == null)
+            var menuItem = await _context.MenuItems
+                .SingleOrDefaultAsync(m => m.MenuItemId == id);
+            if (menuItem == null)
             {
                 return NotFound();
             }
 
-            return View(portfolio);
+            return View(menuItem);
         }
 
-        // POST: Portfolios/Delete/5
+        // POST: MenuItems/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
-            _context.Portfolios.Remove(portfolio);
+            var menuItem = await _context.MenuItems.SingleOrDefaultAsync(m => m.MenuItemId == id);
+            _context.MenuItems.Remove(menuItem);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PortfolioExists(int id)
+        private bool MenuItemExists(int id)
         {
-            return _context.Portfolios.Any(e => e.PortfolioId == id);
+            return _context.MenuItems.Any(e => e.MenuItemId == id);
         }
     }
 }

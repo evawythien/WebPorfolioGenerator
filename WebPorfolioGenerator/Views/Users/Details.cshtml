@@ -6,67 +6,68 @@
 
 <h2>Details</h2>
 
-<div>
+<div class="col-md-12">
     <h4>User</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <div class="container">
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.RolId)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.RolId)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Birth)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.Birth)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.MovilePhone)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.MovilePhone)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.Phone)
-        </dd>
-    </dl>
+        </div>
+    </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.UserId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="linkButton" asp-action="Edit" asp-route-id="@Model.UserId">Edit</a> |
+    <a class="linkButton" asp-action="Index">Back to List</a>
+    <a class="linkButton" asp-action="../Portfolios/Index">Create portfolio</a>
 </div>

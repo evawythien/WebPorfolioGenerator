@@ -5,3 +5,12 @@ $("#login-button").click(function (event) {
     $('form').fadeOut(500);
     $('.wrapper').addClass('form-success');
 });
+
+$("#newItemMenu").click(function (event) {
+    $('#menuElement').clone().prependTo('#menuElement');
+});
+
+
+function checkPasswords() {
+
+}

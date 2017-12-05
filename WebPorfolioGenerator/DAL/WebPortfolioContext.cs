@@ -10,12 +10,12 @@ namespace WebPorfolioGenerator.DAL
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<Client>().ToTable("Clients");
-            modelBuilder.Entity<Employee>().ToTable("Employees");
-        }      
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<User>().ToTable("Users");
+        //    modelBuilder.Entity<Client>().ToTable("Clients");
+        //    modelBuilder.Entity<Employee>().ToTable("Employees");
+        //}      
 
         public DbSet<User> Users { get; set; }
         public DbSet<Client> Clients { get; set; }

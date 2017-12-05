@@ -9,30 +9,11 @@ namespace WebPorfolioGenerator.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "BussinesName",
-                table: "Users",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "PortfolioId",
-                table: "Users",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Discriminator",
-                table: "Users",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
             migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    CommentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -42,7 +23,7 @@ namespace WebPorfolioGenerator.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.CommentId);
                 });
 
             migrationBuilder.CreateTable(
@@ -51,7 +32,7 @@ namespace WebPorfolioGenerator.Migrations
                 {
                     EmployeeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Cargo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Cargo = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     PortfolioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -93,15 +74,16 @@ namespace WebPorfolioGenerator.Migrations
                 name: "MenuItems",
                 columns: table => new
                 {
-                    MenuId = table.Column<int>(type: "int", nullable: false)
+                    MenuItemId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    MenuItemId = table.Column<int>(type: "int", nullable: false),
+                    MenuId = table.Column<int>(type: "int", nullable: false),
                     MenuName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MenuOrder = table.Column<int>(type: "int", nullable: false),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MenuItems", x => x.MenuId);
+                    table.PrimaryKey("PK_MenuItems", x => x.MenuItemId);
                 });
 
             migrationBuilder.CreateTable(
@@ -118,17 +100,35 @@ namespace WebPorfolioGenerator.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Portfolios",
+                columns: table => new
+                {
+                    PortfolioId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FirstColor = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true),
+                    FontId = table.Column<int>(type: "int", nullable: false),
+                    PortfolioName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    PortfolioSurname = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    SecondColor = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true),
+                    UrlBackgroundImage = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Portfolios", x => x.PortfolioId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
                 {
                     PostId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Body = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PortfolioId = table.Column<int>(type: "int", nullable: false),
-                    Subtitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Subtitle = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -141,7 +141,7 @@ namespace WebPorfolioGenerator.Migrations
                 {
                     TagId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<int>(type: "int", maxLength: 200, nullable: false),
                     PostId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -150,33 +150,30 @@ namespace WebPorfolioGenerator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Portfolios",
+                name: "Users",
                 columns: table => new
                 {
-                    PortfolioId = table.Column<int>(type: "int", nullable: false)
+                    BussinesName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeId = table.Column<int>(type: "int", nullable: true),
+                    PortfolioId = table.Column<int>(type: "int", nullable: true),
+                    PortfolioInfo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FirstColor = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FuenteId = table.Column<int>(type: "int", nullable: true),
-                    PortfolioName = table.Column<int>(type: "int", nullable: false),
-                    PortfolioSurname = table.Column<int>(type: "int", nullable: false),
-                    SecondColor = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UrlBackgroundImage = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Birth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
+                    MovilePhone = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
+                    RolId = table.Column<int>(type: "int", nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Portfolios", x => x.PortfolioId);
-                    table.ForeignKey(
-                        name: "FK_Portfolios_Fonts_FuenteId",
-                        column: x => x.FuenteId,
-                        principalTable: "Fonts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Portfolios_FuenteId",
-                table: "Portfolios",
-                column: "FuenteId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -186,6 +183,9 @@ namespace WebPorfolioGenerator.Migrations
 
             migrationBuilder.DropTable(
                 name: "Employees");
+
+            migrationBuilder.DropTable(
+                name: "Fonts");
 
             migrationBuilder.DropTable(
                 name: "Galerys");
@@ -206,19 +206,7 @@ namespace WebPorfolioGenerator.Migrations
                 name: "Tags");
 
             migrationBuilder.DropTable(
-                name: "Fonts");
-
-            migrationBuilder.DropColumn(
-                name: "BussinesName",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "PortfolioId",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "Discriminator",
-                table: "Users");
+                name: "Users");
         }
     }
 }
