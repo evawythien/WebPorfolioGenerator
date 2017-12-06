@@ -7,16 +7,14 @@
     <div class="container">
         <h1>Welcome</h1>
 
-        <form id="login"class="form">
+        <form id="login" class="form">
             <input class="col-md-12" type="text" placeholder="Username">
             <input class="col-md-12" type="password" placeholder="Password">
             <input asp-action="Index" class="col-md-12" type="button" value="GO!" id="login-button">
         </form>
-
-        <form asp-action="GoNext">
-        <input type="hidden" asp-for="UserId" />
-        <input type="submit" value="GoNext" class="btn btn-default" /> |
-        <a asp-action="Index">GO!</a>
-        </form>
+        @*<label> @{ ViewData["Incorrecto"] = ""; }</label>*@
+        <div class="form-group">
+            <input type="submit" value="CorrectLogin" class="btn btn-default" />
+        </div>
     </div>
 </div>

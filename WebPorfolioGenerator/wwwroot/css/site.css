@@ -32,3 +32,10 @@
     border: 5px solid #ced04e;
     padding: 10px;
 }
+
+
+#postBody {
+    height: auto;
+    min-width: 100%;
+    min-height: 303px;
+}
