@@ -148,14 +148,12 @@ namespace WebPorfolioGenerator.Controllers
             return _context.Users.Any(e => e.UserId == id);
         }
 
-        [HttpPost, ActionName("CorrectLogin")]
-        public void CorrectLogin(string userName, string pswrd)
+  
+
+        public Task<User> getUser(int id)
         {
-            ViewData["Incorrecto"] = "";
-            if (_context.Users.Any(e => e.UserName.Equals(userName) && e.Password.Equals(pswrd)))
-                RedirectToAction(nameof(HomeController.Index), "Home");
-            else
-                ViewData["Incorrecto"] = "Contrase incorrecta";
+            return _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
+
         }
     }
 }

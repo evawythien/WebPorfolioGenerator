@@ -7,7 +7,18 @@ $("#login-button").click(function (event) {
 });
 
 $("#newItemMenu").click(function (event) {
-    $('#menuElement').clone().prependTo('#menuElement');
+    
+    //var numero = $("#menuElement").size() + 1;
+
+    //if ($("#menuElement").size() == 1) {
+    //    elemento.attr("id", "menuElement_" + numeroMas);  
+    //} else {
+
+    //}
+    //var elemento = $('#menuElement').clone();
+    //var numeroMas = $("#menuElement").size() + 1;
+    
+    //$('#menuElement').append(elemento);
 });
 
 
