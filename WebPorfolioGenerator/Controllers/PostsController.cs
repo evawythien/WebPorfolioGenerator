@@ -30,8 +30,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var post = await _context.Posts
-                .SingleOrDefaultAsync(m => m.PostId == id);
+            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
             if (post == null)
             {
                 return NotFound();
@@ -121,8 +120,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var post = await _context.Posts
-                .SingleOrDefaultAsync(m => m.PostId == id);
+            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
             if (post == null)
             {
                 return NotFound();

@@ -33,8 +33,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var menuItem = await _context.MenuItems
-                .SingleOrDefaultAsync(m => m.MenuItemId == id);
+            var menuItem = await _context.MenuItems.SingleOrDefaultAsync(m => m.MenuItemId == id);
             if (menuItem == null)
             {
                 return NotFound();
@@ -124,8 +123,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var menuItem = await _context.MenuItems
-                .SingleOrDefaultAsync(m => m.MenuItemId == id);
+            var menuItem = await _context.MenuItems.SingleOrDefaultAsync(m => m.MenuItemId == id);
             if (menuItem == null)
             {
                 return NotFound();

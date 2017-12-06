@@ -33,8 +33,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .SingleOrDefaultAsync(m => m.UserId == id);
+            var user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {
                 return NotFound();
@@ -124,8 +123,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .SingleOrDefaultAsync(m => m.UserId == id);
+            var user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {
                 return NotFound();

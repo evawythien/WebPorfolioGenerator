@@ -146,22 +146,5 @@ namespace WebPorfolioGenerator.Controllers
         {
             return _context.Portfolios.Any(e => e.PortfolioId == id);
         }
-
-
-        // POST: MenuItems/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateMenuItem([Bind("MenuItemId,MenuId,MenuName,Url")] MenuItem menuItem)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(menuItem);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(menuItem);
-        }
     }
 }
