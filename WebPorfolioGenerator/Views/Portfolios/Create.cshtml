@@ -1,8 +1,11 @@
 ﻿@model WebPorfolioGenerator.Models.Portfolio
+
 @{
-    ViewData["Title"] = "Create";  
+    ViewData["Title"] = "Create";
 }
+
 <h2>Create</h2>
+
 <h4>Portfolio</h4>
 <hr />
 <div class="row">
@@ -15,13 +18,13 @@
                 <span asp-validation-for="PortfolioName" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
-                <label asp-for="PortfolioSurname" class="control-label">Subitle</label>
+                <label asp-for="PortfolioSurname" class="control-label">Subtitle</label>
                 <input asp-for="PortfolioSurname" class="form-control" />
                 <span asp-validation-for="PortfolioSurname" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
-                <label asp-for="UrlBackgroundImage" class="control-label"></label>
-                <input asp-for="UrlBackgroundImage" class="form-control" />
+                <label asp-for="UrlBackgroundImage" class="control-label">Background image</label>
+                <input type="image" src="" asp-for="UrlBackgroundImage" class="form-control" />
                 <span asp-validation-for="UrlBackgroundImage" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
@@ -34,25 +37,19 @@
                 <input type="color" asp-for="SecondColor" class="form-control" />
                 <span asp-validation-for="SecondColor" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-6">   
-               
-                <select>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
-              
-                <label asp-for="FontId" class="control-label"></label>
+            <div class="form-group col-md-6">
+                <label asp-for="FontId" class="control-label">Font</label>
                 <input asp-for="FontId" class="form-control" />
                 <span asp-validation-for="FontId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+

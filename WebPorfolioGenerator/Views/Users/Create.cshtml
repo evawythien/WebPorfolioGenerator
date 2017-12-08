@@ -27,8 +27,7 @@
         </div>
         <div class="form-group col-md-6">
             <label asp-for="Birth" class="control-label"></label>
-            <input asp-for="Birth" class="form-control" />
-            <span asp-validation-for="Birth" class="text-danger"></span>
+            <input type="date" asp-for="Birth" class="form-control" />           
         </div>
         <div class="form-group col-md-6">
             <label asp-for="Email" class="control-label"></label>
@@ -44,17 +43,18 @@
         </div>
         <div class="form-group col-md-6">
             <label asp-for="Password" class="control-label"></label>
-            <input id="" asp-for="Password" class="form-control" />
+            <input type="password" id="" asp-for="Password" class="form-control" />
         </div>
         <div class="form-group col-md-6">
             <label class="control-label">Repeat the password</label>
-            <input class="form-control" />
+            <input type="password" class="form-control" />
         </div>
         <div class="form-group col-md-6">
             <span asp-validation-for="UserName" class="text-danger"></span>
             <span asp-validation-for="RolId" class="text-danger"></span>
             <span asp-validation-for="Name" class="text-danger"></span>
             <span asp-validation-for="Surname" class="text-danger"></span>
+            <span asp-validation-for="Birth" class="text-danger"></span>
             <span asp-validation-for="Email" class="text-danger"></span>
             <span asp-validation-for="MovilePhone" class="text-danger"></span>
             <span asp-validation-for="Phone" class="text-danger"></span>

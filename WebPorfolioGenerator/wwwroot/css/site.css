@@ -1,7 +1,4 @@
 ﻿
-#login {
-    width: 50% !important;
-}
 
     #login input {
         border: 3px solid black;
@@ -38,4 +35,8 @@
     height: auto;
     min-width: 100%;
     min-height: 303px;
+}
+
+.buttonContainer {
+    margin-top: 50px;
 }

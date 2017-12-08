@@ -33,6 +33,8 @@ namespace WebPorfolioGenerator.DAL
 
         public DbSet<Tag> Tags { get; set; }
 
+       
+
     }
 }
 

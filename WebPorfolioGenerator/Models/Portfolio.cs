@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebPorfolioGenerator.Models
@@ -25,5 +26,9 @@ namespace WebPorfolioGenerator.Models
         public string SecondColor { get; set; }
                
         public int FontId { get; set; }
+
+        //public List<Font> fontList { get; set; }
+
+      
     }
 }

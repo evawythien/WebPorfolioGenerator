@@ -26,9 +26,12 @@ namespace WebPorfolioGenerator.Controllers
         [HttpPost, ActionName("Login")]
         public async Task<IActionResult> Login(User user)
         {
-            Boolean exits =  _context.Users.Any(e => e.UserName.Equals(user.UserName) && e.Password.Equals(user.Password));
+            Boolean exits = _context.Users.Any(e => e.UserName.Equals(user.UserName) && e.Password.Equals(user.Password));
             if (exits)
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+            {
+                int id = _context.Users.Where(x => x.UserName.Equals(user.UserName)).Select(x => x.UserId).FirstOrDefault();
+                return RedirectToAction(nameof(UsersController.Index), "Users", "?id=" + id);
+            }
             else
                 ViewData["Incorrecto"] = "Contrase incorrecta";
 

@@ -1,73 +1,74 @@
 ﻿@model WebPorfolioGenerator.Models.User
-
 @{
     ViewData["Title"] = "Details";
 }
-
 <h2>Details</h2>
 
-<div class="col-md-12">
-    <h4>User</h4>
-    <hr />
+<h4>User</h4>
+<hr />
+<div class="wrapper">
     <div class="container">
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.UserName)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.UserName)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Name)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Name)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Surname)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Surname)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Password)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Password)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.RolId)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.RolId)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Email)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Email)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Birth)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Birth)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.MovilePhone)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.MovilePhone)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Phone)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Phone)
+
+        <div class="row">
+            <div class="col-md-6 R">
+                @Html.DisplayNameFor(model => model.UserName)
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.UserName)
+            </div>
+            <div class="col-md-6 R">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+            <div class="col-md-6 R">
+                @Html.DisplayNameFor(model => model.Surname)
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Surname)
+            </div>
+            <div class="col-md-6 R">
+                @Html.DisplayNameFor(model => model.RolId)
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.RolId)
+            </div>
+            <div class="col-md-6 R">
+                @Html.DisplayNameFor(model => model.Email)
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Email)
+            </div>
+            <div class="col-md-6 R">
+                @Html.DisplayNameFor(model => model.Birth)
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Birth)
+            </div>
+            <div class="col-md-6 R">
+                @Html.DisplayNameFor(model => model.MovilePhone)
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.MovilePhone)
+            </div>
+            <div class="col-md-6 R">
+                @Html.DisplayNameFor(model => model.Phone)
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Phone)
+            </div>
         </div>
     </div>
 </div>
-<div>
-    <a class="linkButton" asp-action="Edit" asp-route-id="@Model.UserId">Edit</a> |
-    <a class="linkButton" asp-action="Index">Back to List</a>
-    <a class="linkButton" asp-action="../Portfolios/Index">Create portfolio</a>
+<div class="row buttonContainer">
+    <div class="col-md-4">
+        <a class="linkButton" asp-action="Edit" asp-route-id="@Model.UserId">Edit</a>
+    </div>
+    <div class="col-md-4">
+        <a class="linkButton" asp-action="Index">Back to List</a>
+    </div>
+    <div class="col-md-4">
+        <a class="linkButton" asp-controller="Portfolios" asp-action="Index">Create portfolio</a>
+    </div>
 </div>

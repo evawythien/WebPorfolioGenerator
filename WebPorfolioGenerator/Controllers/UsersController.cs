@@ -148,8 +148,6 @@ namespace WebPorfolioGenerator.Controllers
             return _context.Users.Any(e => e.UserId == id);
         }
 
-  
-
         public Task<User> getUser(int id)
         {
             return _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
