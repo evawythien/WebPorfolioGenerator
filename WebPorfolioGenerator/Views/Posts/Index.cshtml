@@ -3,9 +3,7 @@
     ViewData["Title"] = "Index";
 }
 <h2>Index</h2>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -24,10 +22,10 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>                
+            <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
-                </td>               
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreationDate)
                 </td>
@@ -43,3 +41,9 @@
         }
     </tbody>
 </table>
+<div class="row buttonContainer">
+    <div class="col-md-4">
+        <a class="linkButton" asp-action="Create">Create New</a>
+    </div>
+</div>
+

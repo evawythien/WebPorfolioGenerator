@@ -1,0 +1,23 @@
+﻿@model WebPorfolioGenerator.Models.Portfolio
+@{
+    ViewData["Title"] = "Details";
+    Layout = null;
+}
+
+<div>
+
+    <div id="titleBlog">
+        <h1>@Html.DisplayFor(model => model.PortfolioName)</h1>
+        <h2>@Html.DisplayFor(model => model.PortfolioSurname)</h2>
+    </div>
+    <div class="">
+
+    </div>
+
+    <input id="backgroundImagen" hidden value="@Html.DisplayFor(model => model.UrlBackgroundImage)" />
+    <input id="firstColor" hidden value="@Html.DisplayFor(model => model.FirstColor)" />
+    <input id="secondColor" hidden value="@Html.DisplayFor(model => model.SecondColor)" />
+    <input id="font" hidden value="@Html.DisplayFor(model => model.FontId)" />
+
+</div>
+

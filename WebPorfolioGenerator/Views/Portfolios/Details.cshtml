@@ -48,7 +48,14 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.PortfolioId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="row buttonContainer">
+    <div class="col-md-4">
+        <a class="linkButton" asp-action="Edit">Edit</a>
+    </div>
+    <div class="col-md-4">
+        <a class="linkButton" asp-action="Index">Menu</a>
+    </div>
+    <div class="col-md-4">
+        <a class="linkButton" asp-controller="Posts" asp-action="Index">Post</a>
+    </div>
 </div>
