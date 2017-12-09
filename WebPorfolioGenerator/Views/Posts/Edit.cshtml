@@ -12,24 +12,23 @@
             <input type="hidden" asp-for="PostId" />
             <input type="hidden" asp-for="PortfolioId" class="form-control" />
             <div class="form-group col-md-6">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input type="hidden" asp-for="CreationDate" class="form-control" value="" />
+            </div>
+            <div class="form-group col-md-12">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label asp-for="Subtitle" class="control-label"></label>
                 <input asp-for="Subtitle" class="form-control" />
                 <span asp-validation-for="Subtitle" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label asp-for="Body" class="control-label"></label>
-                <input asp-for="Body" class="form-control" />
+                <textarea data-provide="markdown" id="postBody" asp-for="Body" class="form-control"></textarea>
                 <span asp-validation-for="Body" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
-                <span asp-validation-for="CreationDate" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="ModificationDate" class="control-label"></label>

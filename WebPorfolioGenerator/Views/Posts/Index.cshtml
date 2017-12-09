@@ -8,13 +8,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                Creation date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
+                Post title
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ModificationDate)
+                Modification date
             </th>
             <th></th>
         </tr>
@@ -24,10 +24,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    @Html.DisplayFor(modelItem => item.CreationDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CreationDate)
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ModificationDate)

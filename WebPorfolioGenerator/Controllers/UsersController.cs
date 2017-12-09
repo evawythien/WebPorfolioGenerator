@@ -21,7 +21,7 @@ namespace WebPorfolioGenerator.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
             return View(await _context.Users.ToListAsync());
         }
