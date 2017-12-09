@@ -20,5 +20,11 @@
     "inputFiles": [
       "wwwroot/css/Login.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/Portfolio.min.css",
+    "inputFiles": [
+      "wwwroot/css/Portfolio.css"
+    ]
   }
 ]

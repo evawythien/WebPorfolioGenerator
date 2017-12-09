@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace WebPorfolioGenerator.Controllers
 {
@@ -148,10 +149,16 @@ namespace WebPorfolioGenerator.Controllers
             return _context.Users.Any(e => e.UserId == id);
         }
 
-        public Task<User> getUser(int id)
-        {
-            return _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
 
-        }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> LogOut()
+        //{
+        //    HttpContext.Session.SetString("", "Rick");
+        //    ViewData["Message"] = "User logged out.";
+        //    return RedirectToAction(nameof(HomeController.Index), "Home");
+        //}
+
     }
 }

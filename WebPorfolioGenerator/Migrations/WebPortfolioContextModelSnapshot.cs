@@ -11,7 +11,7 @@ using WebPorfolioGenerator.DAL;
 
 namespace WebPorfolioGenerator.Migrations
 {
-    [DbContext(typeof(WebPortfolioContext))]
+    [DbContext(typeof(DAL.WebPortfolioContext))]
     partial class WebPortfolioContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

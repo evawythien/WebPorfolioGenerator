@@ -24,11 +24,8 @@ namespace WebPorfolioGenerator.Models
 
         [StringLength(8)]
         public string SecondColor { get; set; }
-               
+
         public int FontId { get; set; }
 
-        //public List<Font> fontList { get; set; }
-
-      
     }
 }

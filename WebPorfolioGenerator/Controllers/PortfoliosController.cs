@@ -33,8 +33,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var portfolio = await _context.Portfolios
-                .SingleOrDefaultAsync(m => m.PortfolioId == id);
+            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
             if (portfolio == null)
             {
                 return NotFound();
@@ -47,12 +46,7 @@ namespace WebPorfolioGenerator.Controllers
         public IActionResult Create()
         {
             return View();
-        }
-
-        public async Task<IActionResult> Preview()
-        {
-            return View(await _context.Portfolios.ToListAsync());
-        }
+        }      
 
         // POST: Portfolios/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -66,6 +60,21 @@ namespace WebPorfolioGenerator.Controllers
                 _context.Add(portfolio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            return View(portfolio);
+        }
+
+        public async Task<IActionResult> Preview(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
+            if (portfolio == null)
+            {
+                return NotFound();
             }
             return View(portfolio);
         }
@@ -129,8 +138,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var portfolio = await _context.Portfolios
-                .SingleOrDefaultAsync(m => m.PortfolioId == id);
+            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
             if (portfolio == null)
             {
                 return NotFound();

@@ -1,61 +1,55 @@
 ﻿@model WebPorfolioGenerator.Models.Portfolio
-
 @{
     ViewData["Title"] = "Details";
 }
-
 <h2>Details</h2>
-
 <div>
     <h4>Portfolio</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <div class="container">
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.PortfolioName)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.PortfolioName)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.PortfolioSurname)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.PortfolioSurname)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UrlBackgroundImage)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UrlBackgroundImage)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.FirstColor)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.FirstColor)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.SecondColor)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6 ">
             @Html.DisplayFor(model => model.SecondColor)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.FontId)
-        </dt>
-        <dd>
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.FontId)
-        </dd>
-    </dl>
+        </div>
+    </div>
 </div>
 <div class="row buttonContainer">
-    <div class="col-md-4">
-        <a class="linkButton" asp-action="Edit">Edit</a>
+    <div class="col-md-3">
+        <a class="linkButton" asp-action="Edit" asp-route-id="@Model.PortfolioId">Edit</a>
     </div>
-    <div class="col-md-4">
-        <a class="linkButton" asp-action="Index">Menu</a>
+    <div class="col-md-3">
+        <a class="linkButton" asp-controller="MenuItems" asp-action="Index" asp-route-id="@Model.PortfolioId">Menu</a>
     </div>
-    <div class="col-md-4">
-        <a class="linkButton" asp-controller="Posts" asp-action="Index">Post</a>
+    <div class="col-md-3">
+        <a class="linkButton" asp-controller="Posts" asp-action="Index" asp-route-id="@Model.PortfolioId">Post</a>
+    </div>
+    <div class="col-md-3">
+        <a class="linkButton" asp-action="Preview" asp-route-id="@Model.PortfolioId">Preview</a>
     </div>
 </div>

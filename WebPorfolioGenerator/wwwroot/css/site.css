@@ -3,6 +3,7 @@
 #login input {
     border: 3px solid black;
     padding: 10px;
+    margin: inherit;
 }
 
 .fa-times {
@@ -55,4 +56,16 @@
     width: 100vw;
     height: 100vh;
     flex-direction: column;
+}
+
+#modelOne {
+    height: 100px;
+    background-color: #00c5cc;
+    background-image: url(https://www.transparenttextures.com/patterns/asfalt-dark.png);
+}
+
+#modelTwo {
+    height: 100px;
+    background-color: #f9a7b0;
+    background-image: url(https://www.transparenttextures.com/patterns/asfalt-dark.png);
 }

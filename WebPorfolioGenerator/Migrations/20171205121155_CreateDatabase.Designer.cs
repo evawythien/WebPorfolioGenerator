@@ -11,7 +11,7 @@ using WebPorfolioGenerator.DAL;
 
 namespace WebPorfolioGenerator.Migrations
 {
-    [DbContext(typeof(WebPortfolioContext))]
+    [DbContext(typeof(DAL.WebPortfolioContext))]
     [Migration("20171205121155_CreateDatabase")]
     partial class CreateDatabase
     {
