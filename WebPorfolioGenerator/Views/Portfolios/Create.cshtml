@@ -44,7 +44,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="FontId" class="control-label">Font</label>
-                <input asp-for="FontId" class="form-control" />
+                <select asp-for="FontId" asp-items="@(new SelectList(@ViewBag.Fonts,"Id","FontName"))" class=" form-control"></select>
                 <span asp-validation-for="FontId" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
