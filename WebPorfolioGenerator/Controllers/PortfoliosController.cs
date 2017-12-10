@@ -50,7 +50,6 @@ namespace WebPorfolioGenerator.Controllers
         // GET: Portfolios/Create
         public IActionResult Create()
         {
-            ViewBag.Fonts = _context.Fonts.ToList();
             return View();
         }
 
