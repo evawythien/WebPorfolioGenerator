@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,20 +16,23 @@ namespace WebPorfolioGenerator.Controllers
     public class PortfoliosController : Controller
     {
         private readonly WebPortfolioContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public PortfoliosController(WebPortfolioContext context)
+        public PortfoliosController(WebPortfolioContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Portfolios
         public async Task<IActionResult> Index(int? id)
         {
-            Portfolio modelo = new Portfolio();
-            //if (id == null)
-            //    modelo = await _context.Portfolios.Where(n => n.UserId.Equals(id)).ToListAsync();
-            //else
-            //    modelo = await _context.Portfolios.Where(n => n.UserId.Equals(id)).ToListAsync();
+            List<Portfolio> modelo = null;
+
+            if (id == null)
+                modelo = await _context.Portfolios.ToListAsync();
+            else
+                modelo = await _context.Portfolios.Where(n => n.UserId.Equals(id)).ToListAsync();
 
             return View(modelo);
         }
@@ -65,12 +71,29 @@ namespace WebPorfolioGenerator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PortfolioId,PortfolioName,PortfolioSurname,UrlBackgroundImage,FirstColor,SecondColor,FontId")] Portfolio portfolio)
+        public async Task<IActionResult> Create([Bind("PortfolioId,PortfolioName,PortfolioSurname,FirstColor,SecondColor,FontId")] Portfolio portfolio, IFormFile image)
         {
             if (ModelState.IsValid)
             {
+                String imageExtension = Path.GetExtension(image.FileName);
+                portfolio.ExtBackgroundImage = imageExtension;
                 _context.Add(portfolio);
                 await _context.SaveChangesAsync();
+
+                if (image != null)
+                {
+                    if (image.Length > 0)
+                    {
+                        String path = Path.Combine(_hostingEnvironment.WebRootPath, "images", "backgrounds", portfolio.PortfolioId + imageExtension);
+                        //Directory.CreateDirectory(path);
+                        /* Read the File as byte[], just like a local File */
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await image.CopyToAsync(stream);
+                        }
+                    }
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(portfolio);
