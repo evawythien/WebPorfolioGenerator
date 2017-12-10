@@ -75,22 +75,23 @@ namespace WebPorfolioGenerator.Controllers
         {
             if (ModelState.IsValid)
             {
-                String imageExtension = Path.GetExtension(image.FileName);
-                portfolio.ExtBackgroundImage = imageExtension;
+                if (image != null && image.Length > 0)
+                {
+                    String imageExtension = Path.GetExtension(image.FileName);
+                    portfolio.ExtBackgroundImage = imageExtension;
+                }
+
                 _context.Add(portfolio);
                 await _context.SaveChangesAsync();
 
-                if (image != null)
+                if (image != null && image.Length > 0)
                 {
-                    if (image.Length > 0)
+                    String path = Path.Combine(_hostingEnvironment.WebRootPath, "images", "backgrounds", portfolio.ImageName);
+
+                    /* Read the File as byte[], just like a local File */
+                    using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        String path = Path.Combine(_hostingEnvironment.WebRootPath, "images", "backgrounds", portfolio.PortfolioId + imageExtension);
-                        //Directory.CreateDirectory(path);
-                        /* Read the File as byte[], just like a local File */
-                        using (var stream = new FileStream(path, FileMode.Create))
-                        {
-                            await image.CopyToAsync(stream);
-                        }
+                        await image.CopyToAsync(stream);
                     }
                 }
 
@@ -120,7 +121,7 @@ namespace WebPorfolioGenerator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PortfolioId,PortfolioName,PortfolioSurname,UrlBackgroundImage,FirstColor,SecondColor,FontId")] Portfolio portfolio)
+        public async Task<IActionResult> Edit(int id, [Bind("PortfolioId,PortfolioName,PortfolioSurname,FirstColor,SecondColor,FontId")] Portfolio portfolio, IFormFile image)
         {
             if (id != portfolio.PortfolioId)
             {
@@ -131,8 +132,26 @@ namespace WebPorfolioGenerator.Controllers
             {
                 try
                 {
+                    if (image != null && image.Length > 0)
+                    {
+                        String imageExtension = Path.GetExtension(image.FileName);
+                        portfolio.ExtBackgroundImage = imageExtension;
+                    }
+
                     _context.Update(portfolio);
                     await _context.SaveChangesAsync();
+
+                    if (image != null && image.Length > 0)
+                    {
+                        String path = Path.Combine(_hostingEnvironment.WebRootPath, "images", "backgrounds", portfolio.ImageName);
+
+                        /* Read the File as byte[], just like a local File */
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await image.CopyToAsync(stream);
+                        }
+                    }
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
