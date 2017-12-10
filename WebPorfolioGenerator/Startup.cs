@@ -20,6 +20,8 @@ namespace WebPorfolioGenerator
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WebPortfolioContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddMvc();
         }
 
@@ -37,6 +39,7 @@ namespace WebPorfolioGenerator
             }
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

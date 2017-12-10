@@ -59,7 +59,7 @@
                             @Html.DisplayFor(modelItem => item.Phone)
                         </td>
                         <td>
-                            <a asp-action="Create" asp-route-id="@item.UserId">Edit</a> |
+                            <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
                             <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
                         </td>
@@ -72,7 +72,7 @@
 <br/>
 
 <div class="row buttonContainer">
-    <div class="col-md-4">
+    <div class="col-sm-offset-8 col-sm-12">
         <a class="linkButton" asp-action="Create">CREATE</a>
     </div>  
 </div>

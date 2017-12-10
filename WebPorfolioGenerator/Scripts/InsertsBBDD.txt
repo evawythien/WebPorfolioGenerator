@@ -7,14 +7,3 @@ INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Source Code Pro',
 INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Poiret One', 'https://fonts.googleapis.com/css?family=Poiret+One', 'Poiret One', 'cursive');
 INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Josefin Slab', 'https://fonts.googleapis.com/css?family=Josefin+Slab', 'Josefin Slab', 'serif');
 INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Cutive Mono', 'https://fonts.googleapis.com/css?family=Cutive+Mono', 'Cutive Mono', 'monospace');
-
- public int PortfolioId { get; set; }
-        public Portfolio Portfolio { get; set; }
-
-        public List<Portfolio> PortfolioList { get; set; }
-        public List<Font> FontList { get; set; }
-        public Galery Galery { get; set; }
-
-        public List<MenuItem> MenuItemList { get; set; }
-        public List<Post> PostList { get; set; }
-        public List<Tag> TagList { get; set; }

@@ -5,15 +5,14 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 using WebPorfolioGenerator.DAL;
 
 namespace WebPorfolioGenerator.Migrations
 {
-    [DbContext(typeof(DAL.WebPortfolioContext))]
-    [Migration("20171205125154_CreateDatabase2")]
-    partial class CreateDatabase2
+    [DbContext(typeof(WebPortfolioContext))]
+    [Migration("20171210121154_CreateDatabase")]
+    partial class CreateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +20,28 @@ namespace WebPorfolioGenerator.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("WebPorfolioGenerator.Models.About", b =>
+                {
+                    b.Property<int>("AboutId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Body");
+
+                    b.Property<string>("Facebook");
+
+                    b.Property<string>("Instagram");
+
+                    b.Property<int>("PortfolioId");
+
+                    b.Property<string>("Title");
+
+                    b.Property<string>("Twitter");
+
+                    b.HasKey("AboutId");
+
+                    b.ToTable("Abouts");
+                });
 
             modelBuilder.Entity("WebPorfolioGenerator.Models.Comment", b =>
                 {
@@ -40,21 +61,6 @@ namespace WebPorfolioGenerator.Migrations
                     b.HasKey("CommentId");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("WebPorfolioGenerator.Models.Employee", b =>
-                {
-                    b.Property<int>("EmployeeId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Cargo")
-                        .HasMaxLength(200);
-
-                    b.Property<int>("PortfolioId");
-
-                    b.HasKey("EmployeeId");
-
-                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("WebPorfolioGenerator.Models.Font", b =>
@@ -89,16 +95,26 @@ namespace WebPorfolioGenerator.Migrations
                     b.ToTable("Galerys");
                 });
 
-            modelBuilder.Entity("WebPorfolioGenerator.Models.Menu", b =>
+            modelBuilder.Entity("WebPorfolioGenerator.Models.Location", b =>
                 {
-                    b.Property<int>("MenuId")
+                    b.Property<int>("IdLocation")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("PortfolioId");
+                    b.Property<string>("Email");
 
-                    b.HasKey("MenuId");
+                    b.Property<string>("Latitude");
 
-                    b.ToTable("Menus");
+                    b.Property<string>("Longitude");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<string>("PostalCode");
+
+                    b.Property<string>("Street");
+
+                    b.HasKey("IdLocation");
+
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("WebPorfolioGenerator.Models.MenuItem", b =>
@@ -106,11 +122,11 @@ namespace WebPorfolioGenerator.Migrations
                     b.Property<int>("MenuItemId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("MenuId");
-
                     b.Property<string>("MenuName");
 
                     b.Property<int>("MenuOrder");
+
+                    b.Property<int>("PortfolioId");
 
                     b.Property<string>("Url");
 
@@ -171,6 +187,19 @@ namespace WebPorfolioGenerator.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("WebPorfolioGenerator.Models.Rol", b =>
+                {
+                    b.Property<int>("RolId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(200);
+
+                    b.HasKey("RolId");
+
+                    b.ToTable("Rols");
+                });
+
             modelBuilder.Entity("WebPorfolioGenerator.Models.Tag", b =>
                 {
                     b.Property<int>("TagId")
@@ -192,9 +221,6 @@ namespace WebPorfolioGenerator.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Birth");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
 
                     b.Property<string>("Email")
                         .HasMaxLength(120);
@@ -222,25 +248,6 @@ namespace WebPorfolioGenerator.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
-                });
-
-            modelBuilder.Entity("WebPorfolioGenerator.Models.Client", b =>
-                {
-                    b.HasBaseType("WebPorfolioGenerator.Models.User");
-
-                    b.Property<string>("BussinesName");
-
-                    b.Property<int>("EmployeeId");
-
-                    b.Property<int>("PortfolioId");
-
-                    b.Property<string>("PortfolioInfo");
-
-                    b.ToTable("Clients");
-
-                    b.HasDiscriminator().HasValue("Client");
                 });
 #pragma warning restore 612, 618
         }
