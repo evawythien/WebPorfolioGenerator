@@ -27,7 +27,18 @@ namespace WebPorfolioGenerator.Controllers
 
         public async Task<IActionResult> Preview(int? id)
         {
-            return View(_context.Abouts.Where(p => p.PortfolioId.Equals(id)).ToList());
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var about = await _context.Abouts.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
+
+            if (about == null)
+            {
+                return NotFound();
+            }
+            return View(about);
         }
 
         // GET: Abouts/Details/5
@@ -38,8 +49,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var about = await _context.Abouts
-                .SingleOrDefaultAsync(m => m.AboutId == id);
+            var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             if (about == null)
             {
                 return NotFound();

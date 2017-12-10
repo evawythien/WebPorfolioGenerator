@@ -17,8 +17,8 @@
         <ul class="nav navbar-nav">
             <li><a asp-controller="Portfolios" asp-action="Preview" asp-route-id="@Model.PortfolioId">Home</a></li>
             <li><a asp-controller="Posts" asp-action="Preview" asp-route-id="@Model.PortfolioId">Blog</a></li>
-            <li><a asp-controller="Posts" asp-action="Preview" asp-route-id="@Model.PortfolioId">About</a></li>
-            <li><a a asp-controller="Posts" asp-action="Preview" asp-route-id="@Model.PortfolioId">Contact</a></li>
+            <li><a asp-controller="Abouts" asp-action="Preview" asp-route-id="@Model.PortfolioId">About</a></li>
+            <li><a a asp-controller="Locations" asp-action="Preview" asp-route-id="@Model.PortfolioId">Contact</a></li>
         </ul>
     </div>
 
@@ -30,7 +30,7 @@
 
     </div>
 
-    <input id="backgroundImagen" hidden value="@Html.DisplayFor(model => model.UrlBackgroundImage)" />
+    @*<input id="backgroundImagen" hidden value="@Html.DisplayFor(model => model.BackgroundImage)" />*@
     <input id="firstColor" hidden value="@Html.DisplayFor(model => model.FirstColor)" />
     <input id="secondColor" hidden value="@Html.DisplayFor(model => model.SecondColor)" />
     <input id="font" hidden value="@Html.DisplayFor(model => model.FontId)" />

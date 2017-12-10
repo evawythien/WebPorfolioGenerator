@@ -25,6 +25,14 @@ namespace WebPorfolioGenerator.Controllers
             return View(await _context.Locations.ToListAsync());
         }
 
+        public async Task<IActionResult> Preview(int? id)
+        {
+            if (id == null)            
+                return NotFound();            
+
+            return View(await _context.Locations.SingleOrDefaultAsync(m => m.PortfolioId == id));
+        }
+
         // GET: Locations/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -33,8 +41,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var location = await _context.Locations
-                .SingleOrDefaultAsync(m => m.IdLocation == id);
+            var location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
             if (location == null)
             {
                 return NotFound();
@@ -124,8 +131,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var location = await _context.Locations
-                .SingleOrDefaultAsync(m => m.IdLocation == id);
+            var location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
             if (location == null)
             {
                 return NotFound();

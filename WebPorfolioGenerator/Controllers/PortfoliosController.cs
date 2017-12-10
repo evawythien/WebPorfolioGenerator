@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace WebPorfolioGenerator.Controllers
 {
@@ -22,11 +23,16 @@ namespace WebPorfolioGenerator.Controllers
         // GET: Portfolios
         public async Task<IActionResult> Index(int? id)
         {
-            Portfolio modelo = new Portfolio();
-            //if (id == null)
-            //    modelo = await _context.Portfolios.Where(n => n.UserId.Equals(id)).ToListAsync();
-            //else
-            //    modelo = await _context.Portfolios.Where(n => n.UserId.Equals(id)).ToListAsync();
+            List<Portfolio> modelo = new List<Portfolio>();
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            int userRol = _context.Users.Where(u => u.UserId.Equals(userId)).Select(u => u.RolId).FirstOrDefault();
+
+            if (userRol == 4)
+                modelo = await _context.Portfolios.Where(n => n.UserId.Equals(userId)).ToListAsync();
+            else if (id == null)
+                modelo = await _context.Portfolios.ToListAsync();
+            else
+                modelo = await _context.Portfolios.Where(n => n.UserId.Equals(id)).ToListAsync();
 
             return View(modelo);
         }

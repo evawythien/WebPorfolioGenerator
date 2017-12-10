@@ -1,0 +1,54 @@
+﻿@model WebPorfolioGenerator.Models.Location
+@{
+    ViewData["Title"] = "Details";
+    Layout = null;
+}
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet/less" type="text/css" href="~/css/Login.css" />
+    <link rel="stylesheet/less" type="text/css" href="~/css/Portfolio.css" />
+    <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
+</environment>
+<div>
+    <h4>Location</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6 R">
+            @Html.DisplayNameFor(model => model.Street)
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.Street)
+        </div>
+        <div class="col-md-6 R">
+            @Html.DisplayNameFor(model => model.Latitude)
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.Latitude)
+        </div>
+        <div class="col-md-6 R">
+            @Html.DisplayNameFor(model => model.Longitude)
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.Longitude)
+        </div>
+        <div class="col-md-6 R">
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.PostalCode)
+        </div>
+        <div class="col-md-6 R">
+            @Html.DisplayNameFor(model => model.Email)
+        </div>
+        <div class="col-md-6 ">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+        <div class="col-md-6 R">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </div>
+    </div>
+</div>
