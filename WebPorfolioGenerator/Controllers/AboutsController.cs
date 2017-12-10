@@ -25,6 +25,11 @@ namespace WebPorfolioGenerator.Controllers
             return View(await _context.Abouts.ToListAsync());
         }
 
+        public async Task<IActionResult> Preview(int? id)
+        {
+            return View(_context.Abouts.Where(p => p.PortfolioId.Equals(id)).ToList());
+        }
+
         // GET: Abouts/Details/5
         public async Task<IActionResult> Details(int? id)
         {

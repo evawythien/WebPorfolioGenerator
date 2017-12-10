@@ -17,12 +17,16 @@ namespace WebPorfolioGenerator.Controllers
         }
 
         // GET: Posts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            return View(await _context.Posts.ToListAsync());
+            return View(await _context.Posts.Where(p => p.PortfolioId.Equals(id)).ToListAsync());
         }
 
-      
+        public async Task<IActionResult> Preview(int? id)
+        {
+            return View(_context.Posts.Where(p => p.PortfolioId.Equals(id)).ToList());
+        }
+
         // GET: Posts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -41,9 +45,14 @@ namespace WebPorfolioGenerator.Controllers
         }
 
         // GET: Posts/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            return View(); //RedirectToAction(nameof(PostsController.Create), "Posts"); 
         }
 
         // POST: Posts/Create

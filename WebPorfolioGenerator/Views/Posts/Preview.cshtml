@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebPorfolioGenerator.Models.Post>
+@{
+    Layout = null;
+}
+
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet/less" type="text/css" href="~/css/Login.css" />
+    <link rel="stylesheet/less" type="text/css" href="~/css/Portfolio.css" />
+    <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
+</environment>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        @*<li><a asp-controller="Portfolios" asp-action="Preview" asp-route-id="@modelItem.PortfolioId">Home</a></li>
+        <li><a asp-controller="Posts" asp-action="Preview" asp-route-id="@modelItem.PortfolioId">Blog</a></li>
+        <li><a asp-controller="Posts" asp-action="Preview" asp-route-id="@modelItem.PortfolioId">About</a></li>
+        <li><a a asp-controller="Posts" asp-action="Preview" asp-route-id="@modelItem.PortfolioId">Contact</a></li>*@
+    </ul>
+</div>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="post">
+            <div class="col-md-12">
+                <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+            </div>
+            <div class="col-md-12">
+                <h4>@Html.DisplayFor(modelItem => item.Subtitle)</h4>
+            </div>
+            <div class="col-md-12">
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </div>
+            <div class="col-md-12">
+                @Html.DisplayFor(modelItem => item.Body)
+            </div>
+        </div>
+        }
+</div>

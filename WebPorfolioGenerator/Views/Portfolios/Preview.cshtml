@@ -15,10 +15,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li><a asp-controller="Posts" asp-action="Preview" asp-route-id="@Model.PortfolioId">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Blog</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a asp-controller="Portfolios" asp-action="Preview" asp-route-id="@Model.PortfolioId">Home</a></li>
+            <li><a asp-controller="Posts" asp-action="Preview" asp-route-id="@Model.PortfolioId">Blog</a></li>
+            <li><a asp-controller="Posts" asp-action="Preview" asp-route-id="@Model.PortfolioId">About</a></li>
+            <li><a a asp-controller="Posts" asp-action="Preview" asp-route-id="@Model.PortfolioId">Contact</a></li>
         </ul>
     </div>
 

@@ -25,6 +25,11 @@ namespace WebPorfolioGenerator.Controllers
             return View(await _context.Portfolios.ToListAsync());
         }
 
+        public async Task<IActionResult> Preview(int? id)
+        {
+            return View(await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id));
+        }
+
         // GET: Portfolios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,7 +51,7 @@ namespace WebPorfolioGenerator.Controllers
         public IActionResult Create()
         {
             return View();
-        }      
+        }
 
         // POST: Portfolios/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -60,21 +65,6 @@ namespace WebPorfolioGenerator.Controllers
                 _context.Add(portfolio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(portfolio);
-        }
-
-        public async Task<IActionResult> Preview(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
-            if (portfolio == null)
-            {
-                return NotFound();
             }
             return View(portfolio);
         }

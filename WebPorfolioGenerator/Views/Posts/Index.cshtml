@@ -43,7 +43,7 @@
 </table>
 <div class="row buttonContainer">
     <div class="col-md-12 R">
-        <a class="linkButton" asp-action="Create" asp-route-id="">Create New</a>
+        <a class="linkButton" asp-action="Create" asp-route-id="@ViewContext.RouteData.Values["id"]">Create New</a>
     </div>
 </div>
 
