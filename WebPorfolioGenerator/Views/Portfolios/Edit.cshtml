@@ -40,12 +40,10 @@
                 <input asp-for="FontId" class="form-control" />
                 <span asp-validation-for="FontId" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-6">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+            <div class="row buttonContainer R">
+                <a class="linkButton" asp-action="Index">Back to List</a>
+                <input class="linkButton"type="submit" value="Save" class="btn btn-default" />
+            </div>           
         </form>
     </div>
-</div>
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>

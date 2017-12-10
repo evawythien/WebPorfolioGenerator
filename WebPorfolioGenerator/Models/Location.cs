@@ -9,6 +9,8 @@ namespace WebPorfolioGenerator.Models
         [Key]
         public int IdLocation { get; set; }
 
+        public int PortfolioId { get; set; }
+
         public string Street { get; set; }
 
         public string Latitude { get; set; }

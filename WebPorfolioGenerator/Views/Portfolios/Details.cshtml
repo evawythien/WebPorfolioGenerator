@@ -40,16 +40,11 @@
     </div>
 </div>
 <div class="row buttonContainer">
-    <div class="col-md-3">
-        <a class="linkButton" asp-action="Edit" asp-route-id="@Model.PortfolioId">Edit</a>
-    </div>
-    <div class="col-md-3">
-        <a class="linkButton" asp-controller="MenuItems" asp-action="Index" asp-route-id="@Model.PortfolioId">Menu</a>
-    </div>
-    <div class="col-md-3">
-        <a class="linkButton" asp-controller="Posts" asp-action="Index" asp-route-id="@Model.PortfolioId">Post</a>
-    </div>
-    <div class="col-md-3">
-        <a class="linkButton" asp-controller="PortfolioPreview" asp-action="PortfolioPreview" asp-route-id="@Model.PortfolioId">Preview</a>
+    <div class="col-md-12 R">
+        <a class="linkButton" asp-action="Edit" asp-route-id="@Model.PortfolioId">Edit</a>  
+        <a class="linkButton" asp-controller="Posts" asp-action="Index" asp-route-id="@Model.PortfolioId">Post</a>        
+        <a class="linkButton" asp-controller="Locations" asp-action="Index" asp-route-id="@Model.PortfolioId">Localization</a>
+        <a class="linkButton" asp-controller="Abouts" asp-action="Index" asp-route-id="@Model.PortfolioId">About me</a>
+        <a class="linkButton" asp-controller="PortfolioPreviews" asp-action="MainPreview" asp-route-id="@Model.PortfolioId">Preview</a>
     </div>
 </div>

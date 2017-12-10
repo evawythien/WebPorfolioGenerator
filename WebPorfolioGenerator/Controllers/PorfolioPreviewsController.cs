@@ -17,7 +17,7 @@ namespace WebPorfolioGenerator.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> PortfolioPreview(int? id)
+        public async Task<IActionResult> MainPreview(int? id)
         {
             return View(_context.Portfolios.Where(x => x.PortfolioId.Equals(id)));
         }

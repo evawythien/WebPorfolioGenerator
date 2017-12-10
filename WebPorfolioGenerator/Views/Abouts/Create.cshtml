@@ -1,20 +1,17 @@
 ﻿@model WebPorfolioGenerator.Models.About
-
 @{
     ViewData["Title"] = "Create";
 }
-
 <h2>Create</h2>
-
 <h4>About</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="PortfolioId" class="control-label"></label>
-                <input asp-for="PortfolioId" class="form-control" />
+                <input asp-for="PortfolioId" class="form-control" value="" />
                 <span asp-validation-for="PortfolioId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -24,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Body" class="control-label"></label>
-                <input asp-for="Body" class="form-control" />
+                <textarea data-provide="markdown" asp-for="Body" class="form-control"></textarea>
                 <span asp-validation-for="Body" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -42,14 +39,12 @@
                 <input asp-for="Facebook" class="form-control" />
                 <span asp-validation-for="Facebook" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="row buttonContainer">
+                <div class="col-md-12 R">
+                    <a class="linkButton" asp-action="Index">Back to List</a>
+                    <input type="submit" value="Create" class="btn btn-default linkButton" />                    
+                </div>
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

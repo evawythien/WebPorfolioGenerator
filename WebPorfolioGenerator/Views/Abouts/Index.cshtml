@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebPorfolioGenerator.Models.About>
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Index</h2>
+
+<div class="table">
+
+    <div class="col-md-12">
+
+
+
+
+
+
+    </div>
+
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {
+            <div class="container">
+                <div class="col-md-12">
+                    <h4>@Html.DisplayNameFor(model => model.Title)</h4>
+                </div>
+                <div class="col-md-12">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </div>
+                <div class="col-md-12">
+                    <h4>@Html.DisplayNameFor(model => model.Body)</h4>
+                </div>
+                <div class="col-md-12">
+                    @Html.DisplayFor(modelItem => item.Body)
+                </div>
+                <div class="col-md-6">
+                    <h4>@Html.DisplayNameFor(model => model.Twitter)</h4>
+                    @Html.DisplayFor(modelItem => item.Twitter)
+                </div>
+                <div class="col-md-6">
+                    <h4>@Html.DisplayNameFor(model => model.Instagram)</h4>
+                    @Html.DisplayFor(modelItem => item.Instagram)
+                </div>
+                <div class="col-md-6">
+                    <h4>@Html.DisplayNameFor(model => model.Facebook)</h4>
+                    @Html.DisplayFor(modelItem => item.Facebook)
+                </div>
+                <div class="col-md-6">                    
+                </div>
+            </div>
+            <div class="col-md-12 R">
+                <a class="linkButton" asp-action="Details" asp-controller="Portfolios" asp-route-id="@item.PortfolioId">Back to List</a>
+                <a class="linkButton" asp-action="Edit" asp-route-id="@item.AboutId">Edit</a>
+                <a class="linkButton" asp-action="Details" asp-route-id="@item.AboutId">Details</a>
+                <a class="linkButton" asp-action="Delete" asp-route-id="@item.AboutId">Delete</a>
+            </div>
+        }
+    </div>
+</div>
+<div class="row buttonContainer">
+    <div class="col-md-12 R">
+        @if (Model.Count() <= 0)
+        {
+            <a class="linkButton" asp-action="Create" asp-route-id="1">Create New</a>
+        }
+    </div>
+</div>
