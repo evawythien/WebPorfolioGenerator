@@ -20,9 +20,15 @@ namespace WebPorfolioGenerator.Controllers
         }
 
         // GET: Portfolios
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            return View(await _context.Portfolios.ToListAsync());
+            Portfolio modelo = new Portfolio();
+            //if (id == null)
+            //    modelo = await _context.Portfolios.Where(n => n.UserId.Equals(id)).ToListAsync();
+            //else
+            //    modelo = await _context.Portfolios.Where(n => n.UserId.Equals(id)).ToListAsync();
+
+            return View(modelo);
         }
 
         public async Task<IActionResult> Preview(int? id)
@@ -48,7 +54,7 @@ namespace WebPorfolioGenerator.Controllers
         }
 
         // GET: Portfolios/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
             return View();
         }

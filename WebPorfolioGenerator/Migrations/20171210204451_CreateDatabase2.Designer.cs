@@ -11,9 +11,10 @@ using WebPorfolioGenerator.DAL;
 namespace WebPorfolioGenerator.Migrations
 {
     [DbContext(typeof(WebPortfolioContext))]
-    partial class WebPortfolioContextModelSnapshot : ModelSnapshot
+    [Migration("20171210204451_CreateDatabase2")]
+    partial class CreateDatabase2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,9 +142,6 @@ namespace WebPorfolioGenerator.Migrations
                     b.Property<int>("PortfolioId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<byte[]>("BackgroundImage")
-                        .HasMaxLength(8000);
-
                     b.Property<string>("FirstColor")
                         .HasMaxLength(8);
 
@@ -157,6 +155,9 @@ namespace WebPorfolioGenerator.Migrations
 
                     b.Property<string>("SecondColor")
                         .HasMaxLength(8);
+
+                    b.Property<string>("UrlBackgroundImage")
+                        .HasMaxLength(500);
 
                     b.Property<int>("UserId");
 

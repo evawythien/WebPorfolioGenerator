@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="bin\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
