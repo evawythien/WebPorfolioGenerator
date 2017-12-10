@@ -21,7 +21,11 @@ $("#newItemMenu").click(function (event) {
     //$('#menuElement').append(elemento);
 });
 
-
-function checkPasswords() {
-
-}
+$("#editUser").submit(function () {
+    var result = true;
+    if ($("#pswrdOne").val() != $("#pswrdTwo").val()) {
+        $("#difPswrd").html("The passwords are different");
+        result = false;
+    }
+    return result;
+});

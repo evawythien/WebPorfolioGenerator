@@ -1,56 +1,54 @@
 ﻿@model IEnumerable<WebPorfolioGenerator.Models.Portfolio>
-
 @{
     ViewData["Title"] = "Index";
 }
-
 <h2>Index</h2>
-
 
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    Title
-                </th>
-                <th>
-                    Subtitle
-                </th>                
-                <th>
-                    First color
-                </th>
-                <th>
-                   Second color
-                </th>                
+            <th>
+                Title
+            </th>
+            <th>
+                Subtitle
+            </th>
+            <th>
+                First color
+            </th>
+            <th>
+                Second color
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PortfolioName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PortfolioSurname)
-            </td>           
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstColor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecondColor)
-            </td>           
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PortfolioId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PortfolioId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PortfolioId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PortfolioName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PortfolioSurname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstColor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondColor)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PortfolioId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PortfolioId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PortfolioId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 <div class="row buttonContainer">
     <div class="col-md-3">
         <a class="linkButton" asp-action="Create">Create</a>
-    </div>  
+    </div>
 </div>

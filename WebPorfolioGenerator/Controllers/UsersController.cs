@@ -21,9 +21,29 @@ namespace WebPorfolioGenerator.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index()
         {
-            return View(await _context.Users.ToListAsync());
+            int? userId = HttpContext.Session.GetInt32("UserId"); 
+            int userRol = _context.Users.Where(u => u.UserId.Equals(userId)).Select(u => u.RolId).FirstOrDefault();
+            List<User> model = new List<User>();
+
+            switch (userRol)
+            {
+                case 1:
+                    model = await _context.Users.ToListAsync();
+                    break;
+                case 2:
+                    model = await _context.Users.Where(u => !u.RolId.Equals("1") && !u.RolId.Equals("3")).ToListAsync();
+                    break;
+                case 3:
+                    model = await _context.Users.Where(u => !u.RolId.Equals("1") && !u.RolId.Equals("2")).ToListAsync();
+                    break;
+                case 4:
+                    model = await _context.Users.Where(u => u.UserId.Equals(userId)).ToListAsync();
+                    break;
+            }
+
+            return View(model);
         }
 
         // GET: Users/Details/5

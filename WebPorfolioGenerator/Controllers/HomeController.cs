@@ -32,8 +32,8 @@ namespace WebPorfolioGenerator.Controllers
             if (exits)
             {
                 int id = _context.Users.Where(x => x.UserName.Equals(user.UserName)).Select(x => x.UserId).FirstOrDefault();
-                HttpContext.Session.SetString("UserId", id.ToString());
-                return RedirectToAction(nameof(UsersController.Index), new RouteValueDictionary(new { controller = "Users", action = nameof(UsersController.Index), Id = id }));               
+                HttpContext.Session.SetInt32("UserId", id);
+                return RedirectToAction(nameof(UsersController.Index), "Users");
             }
             else
                 ViewData["Incorrecto"] = "Something incorrect";

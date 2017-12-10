@@ -50,6 +50,6 @@
         <a class="linkButton" asp-controller="Posts" asp-action="Index" asp-route-id="@Model.PortfolioId">Post</a>
     </div>
     <div class="col-md-3">
-        <a class="linkButton" asp-action="Preview" asp-route-id="@Model.PortfolioId">Preview</a>
+        <a class="linkButton" asp-controller="PortfolioPreview" asp-action="PortfolioPreview" asp-route-id="@Model.PortfolioId">Preview</a>
     </div>
 </div>

@@ -1,24 +1,21 @@
-﻿@model IEnumerable<WebPorfolioGenerator.Models.Portfolio>
-
+﻿@model WebPorfolioGenerator.Models.Portfolio
 @{
     ViewData["Title"] = "Create";
 }
-
 <h2>Create</h2>
-@Html.DisplayNameFor(model => model)
 <h4>Portfolio</h4>
 <hr />
 
- 
-@*<div class="row">
+
+<div class="row">
     <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div id="modelOne" class="form-group col-md-6 C">
-                M O D E L 1
+                <input class="form-control" type="radio" name="model" value="1">M O D E L 1<br>
             </div>
             <div id="modelTwo" class="form-group col-md-6 C">
-                M O D E L 2
+                <input class="form-control" type="radio" name="model" value="2" checked> M O D E L 2<br>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="PortfolioName" class="control-label">Title</label>
@@ -32,7 +29,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="UrlBackgroundImage" class="control-label">Background image</label>
-                <input type="image" src="" asp-for="UrlBackgroundImage" class="form-control" />
+                <input type="file" src="" asp-for="UrlBackgroundImage" class="form-control" />
                 <span asp-validation-for="UrlBackgroundImage" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
@@ -55,9 +52,7 @@
             </div>
         </form>
     </div>
-</div>*@
-
+</div>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-

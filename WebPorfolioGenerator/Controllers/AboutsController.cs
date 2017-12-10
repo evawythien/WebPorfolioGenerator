@@ -1,29 +1,31 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
 
 namespace WebPorfolioGenerator.Controllers
 {
-    public class PostsController : Controller
+    public class AboutsController : Controller
     {
         private readonly WebPortfolioContext _context;
 
-        public PostsController(WebPortfolioContext context)
+        public AboutsController(WebPortfolioContext context)
         {
             _context = context;
         }
 
-        // GET: Posts
+        // GET: Abouts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Posts.ToListAsync());
+            return View(await _context.Abouts.ToListAsync());
         }
 
-      
-        // GET: Posts/Details/5
+        // GET: Abouts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -31,38 +33,39 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
-            if (post == null)
+            var about = await _context.Abouts
+                .SingleOrDefaultAsync(m => m.AboutId == id);
+            if (about == null)
             {
                 return NotFound();
             }
 
-            return View(post);
+            return View(about);
         }
 
-        // GET: Posts/Create
+        // GET: Abouts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Posts/Create
+        // POST: Abouts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PostId,PortfolioId,Title,Subtitle,Body,CreationDate,ModificationDate")] Post post)
+        public async Task<IActionResult> Create([Bind("AboutId,PortfolioId,Title,Body,Twitter,Instagram,Facebook")] About about)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(post);
+                _context.Add(about);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(post);
+            return View(about);
         }
 
-        // GET: Posts/Edit/5
+        // GET: Abouts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -70,22 +73,22 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
-            if (post == null)
+            var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
+            if (about == null)
             {
                 return NotFound();
             }
-            return View(post);
+            return View(about);
         }
 
-        // POST: Posts/Edit/5
+        // POST: Abouts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PostId,PortfolioId,Title,Subtitle,Body,CreationDate,ModificationDate")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("AboutId,PortfolioId,Title,Body,Twitter,Instagram,Facebook")] About about)
         {
-            if (id != post.PostId)
+            if (id != about.AboutId)
             {
                 return NotFound();
             }
@@ -94,12 +97,12 @@ namespace WebPorfolioGenerator.Controllers
             {
                 try
                 {
-                    _context.Update(post);
+                    _context.Update(about);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PostExists(post.PostId))
+                    if (!AboutExists(about.AboutId))
                     {
                         return NotFound();
                     }
@@ -110,10 +113,10 @@ namespace WebPorfolioGenerator.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(post);
+            return View(about);
         }
 
-        // GET: Posts/Delete/5
+        // GET: Abouts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -121,29 +124,30 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
-            if (post == null)
+            var about = await _context.Abouts
+                .SingleOrDefaultAsync(m => m.AboutId == id);
+            if (about == null)
             {
                 return NotFound();
             }
 
-            return View(post);
+            return View(about);
         }
 
-        // POST: Posts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
-            _context.Posts.Remove(post);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //// POST: Abouts/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
+        //    _context.Abouts.Remove(about);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-        private bool PostExists(int id)
+        private bool AboutExists(int id)
         {
-            return _context.Posts.Any(e => e.PostId == id);
+            return _context.Abouts.Any(e => e.AboutId == id);
         }
     }
 }
