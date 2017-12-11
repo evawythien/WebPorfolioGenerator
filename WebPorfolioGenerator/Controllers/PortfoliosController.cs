@@ -91,8 +91,7 @@ namespace WebPorfolioGenerator.Controllers
             {
                 if (image != null && image.Length > 0)
                 {
-                    String imageExtension = Path.GetExtension(image.FileName);
-                    portfolio.ExtBackgroundImage = imageExtension;
+                    portfolio.ExtBackgroundImage = Path.GetExtension(image.FileName);
                 }
 
                 _context.Add(portfolio);
@@ -138,7 +137,7 @@ namespace WebPorfolioGenerator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PortfolioId,PortfolioName,PortfolioSurname,FirstColor,SecondColor,FontId")] Portfolio portfolio, IFormFile image)
+        public async Task<IActionResult> Edit(int id, [Bind("PortfolioId,PortfolioName,PortfolioSurname,FirstColor,SecondColor,FontId,ExtBackgroundImage")] Portfolio portfolio, IFormFile image)
         {
             if (id != portfolio.PortfolioId)
             {
@@ -151,8 +150,7 @@ namespace WebPorfolioGenerator.Controllers
                 {
                     if (image != null && image.Length > 0)
                     {
-                        String imageExtension = Path.GetExtension(image.FileName);
-                        portfolio.ExtBackgroundImage = imageExtension;
+                        portfolio.ExtBackgroundImage = Path.GetExtension(image.FileName);
                     }
 
                     _context.Update(portfolio);

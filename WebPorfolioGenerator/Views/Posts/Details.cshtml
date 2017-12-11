@@ -20,8 +20,9 @@
         <div class="form-group col-md-12">
             <h2>  @Html.DisplayFor(model => model.Subtitle)</h2>
         </div>
-        <div class="form-group col-md-12">
-            @Html.DisplayFor(model => model.Body)
+
+        <div id="postBody" class="col-md-12">
+            @Html.Raw(new HeyRed.MarkdownSharp.Markdown().Transform(Model.Body))
         </div>
 
 
@@ -29,7 +30,7 @@
     <div class="row buttonContainer">
         <div class="col-md-12 R">
             <a class="linkButton" asp-action="Index">Back to List</a>
-            <a class="linkButton" asp-action="Edit" asp-route-id="@Model.PostId">Edit</a>             
+            <a class="linkButton" asp-action="Edit" asp-route-id="@Model.PostId">Edit</a>
         </div>
     </div>
 </div>

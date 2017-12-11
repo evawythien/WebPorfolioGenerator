@@ -9,6 +9,7 @@
     <link rel="stylesheet/less" type="text/css" href="~/css/Login.css" />
     <link rel="stylesheet/less" type="text/css" href="~/css/Portfolio.css" />
     <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
+    <script src="~/toopay-bootstrap-markdown/js/markdown.js"></script>
 </environment>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @ViewBag.FirstColor">
     <ul class="nav navbar-nav">
@@ -18,7 +19,7 @@
         <li><a style="color: @ViewBag.SecondColor" asp-controller="Locations" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Location</a></li>
     </ul>
 </div>
-<div class="container">
+<div class="container" style="font-family: @ViewBag.FontName; font-style: @ViewBag.FontStyle;">
 
     @if (Model.Count() > 0)
     {
@@ -35,7 +36,7 @@
                     @Html.DisplayFor(modelItem => item.CreationDate)
                 </div>
                 <div class="col-md-offset-2 col-md-8 col-md-offset-2">
-                    @Html.DisplayFor(modelItem => item.Body)
+                    @Html.Raw(new HeyRed.MarkdownSharp.Markdown().Transform(item.Body))
                 </div>
             </div>
         }
