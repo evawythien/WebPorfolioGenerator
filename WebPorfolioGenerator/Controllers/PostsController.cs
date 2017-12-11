@@ -78,7 +78,7 @@ namespace WebPorfolioGenerator.Controllers
             {
                 _context.Add(post);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id = post.PortfolioId});
             }
             return View(post);
         }
@@ -129,7 +129,7 @@ namespace WebPorfolioGenerator.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id = post.PortfolioId });
             }
             return View(post);
         }
