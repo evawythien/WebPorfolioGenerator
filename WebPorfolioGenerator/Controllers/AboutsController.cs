@@ -27,7 +27,24 @@ namespace WebPorfolioGenerator.Controllers
 
         public async Task<IActionResult> Preview(int? id)
         {
-            return View(_context.Abouts.Where(p => p.PortfolioId.Equals(id)).ToList());
+            if (id == null)
+                return NotFound();
+
+            var about = await _context.Abouts.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
+            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
+            var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+
+            ViewBag.FirstColor = portfolio.FirstColor;
+            ViewBag.SecondColor = portfolio.SecondColor;
+            ViewBag.FontName = font.FontName;
+            ViewBag.FontFamily = font.FontFamily;
+            ViewBag.Style = font.Style;
+
+            if (about == null)
+            {
+                return NotFound();
+            }
+            return View(about);
         }
 
         // GET: Abouts/Details/5
@@ -38,8 +55,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var about = await _context.Abouts
-                .SingleOrDefaultAsync(m => m.AboutId == id);
+            var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             if (about == null)
             {
                 return NotFound();
@@ -129,8 +145,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            var about = await _context.Abouts
-                .SingleOrDefaultAsync(m => m.AboutId == id);
+            var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             if (about == null)
             {
                 return NotFound();

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace WebPorfolioGenerator.Controllers
 {
@@ -27,9 +28,13 @@ namespace WebPorfolioGenerator.Controllers
         // GET: Portfolios
         public async Task<IActionResult> Index(int? id)
         {
-            List<Portfolio> modelo = null;
+            List<Portfolio> modelo = new List<Portfolio>();
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            int userRol = _context.Users.Where(u => u.UserId.Equals(userId)).Select(u => u.RolId).FirstOrDefault();
 
-            if (id == null)
+            if (userRol == 4)
+                modelo = await _context.Portfolios.Where(n => n.UserId.Equals(userId)).ToListAsync();
+            else if (id == null)
                 modelo = await _context.Portfolios.ToListAsync();
             else
                 modelo = await _context.Portfolios.Where(n => n.UserId.Equals(id)).ToListAsync();
@@ -39,7 +44,16 @@ namespace WebPorfolioGenerator.Controllers
 
         public async Task<IActionResult> Preview(int? id)
         {
-            return View(await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id));
+            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
+            var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+
+            ViewBag.FirstColor = portfolio.FirstColor;
+            ViewBag.SecondColor = portfolio.SecondColor;
+            ViewBag.FontName = font.FontName;
+            ViewBag.FontFamily = font.FontFamily;
+            ViewBag.Style = font.Style;
+
+            return View(portfolio);
         }
 
         // GET: Portfolios/Details/5
@@ -113,6 +127,9 @@ namespace WebPorfolioGenerator.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Fonts = _context.Fonts.ToList();
+
             return View(portfolio);
         }
 

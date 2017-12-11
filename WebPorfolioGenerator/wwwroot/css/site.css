@@ -25,15 +25,18 @@
 
 .linkButton {
     border: 1px solid #e8ba00;
+    background-color: white;
     padding: 10px;
     border-radius: 10px;
     color: black;
+    min-width: 100px;
 }
 
     .linkButton:hover {
         background-color: #e8ba00;
         color: black;
         text-decoration: none;
+        min-width: 100px;
     }
 
 #postBody {
@@ -46,12 +49,7 @@
     margin-top: 50px;
 }
 
-
-
-
-
 #titleBlog {
-    border: 3px solid black;
     padding: 12px;
     width: fit-content;
     display: flex;
@@ -72,4 +70,13 @@
     height: 100px;
     background-color: #f9a7b0;
     background-image: url(https://www.transparenttextures.com/patterns/asfalt-dark.png);
+}
+
+#backButton {
+    background-color: yellow;
+    border-radius: 100%;
+}
+
+.about {
+    padding: 10px;
 }

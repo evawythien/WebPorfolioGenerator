@@ -23,7 +23,7 @@ namespace WebPorfolioGenerator.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            int? userId = HttpContext.Session.GetInt32("UserId"); 
+            int? userId = HttpContext.Session.GetInt32("UserId");
             int userRol = _context.Users.Where(u => u.UserId.Equals(userId)).Select(u => u.RolId).FirstOrDefault();
             List<User> model = new List<User>();
 
@@ -66,6 +66,7 @@ namespace WebPorfolioGenerator.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
+            ViewBag.Rols = _context.Rols.ToList();
             return View();
         }
 
@@ -98,6 +99,9 @@ namespace WebPorfolioGenerator.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Rols = _context.Rols.ToList();
+
             return View(user);
         }
 
@@ -170,15 +174,11 @@ namespace WebPorfolioGenerator.Controllers
         }
 
 
+        //public async Task<IActionResult> isLogin() {
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> LogOut()
-        //{
-        //    HttpContext.Session.SetString("", "Rick");
-        //    ViewData["Message"] = "User logged out.";
-        //    return RedirectToAction(nameof(HomeController.Index), "Home");
+        //    int? userId = HttpContext.Session.GetInt32("UserId");
+        //    if (userId == null)
+        //        return RedirectToAction("Home",nameof(Login));
         //}
-
     }
 }

@@ -1,74 +1,75 @@
 ﻿@model WebPorfolioGenerator.Models.User
-
 @{
     ViewData["Title"] = "Delete";
 }
-
 <h2>Delete</h2>
-
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>User</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <div class="container">
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6">
+            <label>@Html.DisplayFor(model => model.UserName)</label>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6">
+            <label>@Html.DisplayFor(model => model.Name)</label>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6">
+            <label> @Html.DisplayFor(model => model.Surname)</label>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6">
+            <label>@Html.DisplayFor(model => model.Password)</label>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.RolId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RolId)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6">
+            <label> @Html.DisplayFor(model => model.RolId)</label>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6">
+            <label>  @Html.DisplayFor(model => model.Email)</label>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Birth)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Birth)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6">
+            <label>  @Html.DisplayFor(model => model.Birth)</label>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.MovilePhone)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MovilePhone)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6">
+            <label>  @Html.DisplayFor(model => model.MovilePhone)</label>
+        </div>
+        <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="UserId" />
-        <input type="submit" value="Delete" class="btn btn-default" />
-    </form>
+        </div>
+        <div class="col-md-6">
+            <label>  @Html.DisplayFor(model => model.Phone)</label>
+        </div>
+    </div>
+    <div class="row buttonContainer">
+        <div class="col-md-12 R">
+            <form asp-action="Delete">
+                <a class="linkButton" asp-action="Index">Back to List</a>
+                <input type="hidden" asp-for="UserId" />
+                <input class="linkButton" type="submit" value="Delete" class="btn btn-default" />
+            </form>
+        </div>
+    </div>
 </div>
