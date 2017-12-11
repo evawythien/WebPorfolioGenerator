@@ -33,10 +33,10 @@ namespace WebPorfolioGenerator.Controllers
                     model = await _context.Users.ToListAsync();
                     break;
                 case 2:
-                    model = await _context.Users.Where(u => !u.RolId.Equals("1") && !u.RolId.Equals("3")).ToListAsync();
+                    model = await _context.Users.Where(u => u.RolId == 2 ||  u.RolId == 4).ToListAsync();
                     break;
                 case 3:
-                    model = await _context.Users.Where(u => !u.RolId.Equals("1") && !u.RolId.Equals("2")).ToListAsync();
+                    model = await _context.Users.Where(u => u.RolId ==  2 || u.RolId ==  3 || u.RolId == 4).ToListAsync();
                     break;
                 case 4:
                     model = await _context.Users.Where(u => u.UserId.Equals(userId)).ToListAsync();
