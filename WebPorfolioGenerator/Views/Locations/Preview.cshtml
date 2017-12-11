@@ -10,45 +10,31 @@
     <link rel="stylesheet/less" type="text/css" href="~/css/Portfolio.css" />
     <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
 </environment>
-<div>
-    <h4>Location</h4>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @ViewBag.FirstColor">
+    <ul class="nav navbar-nav">
+        <li><a style="color: @ViewBag.SecondColor;" asp-controller="Portfolios" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Home</a></li>
+        <li><a style="color: @ViewBag.SecondColor" asp-controller="Posts" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Blog</a></li>
+        <li><a style="color: @ViewBag.SecondColor" asp-controller="Abouts" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">About</a></li>
+        <li><a style="color: @ViewBag.SecondColor" asp-controller="Locations" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Location</a></li>
+    </ul>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 C">
+            <h1 style="color: @ViewBag.FirstColor;">Location</h1>
+        </div>
+    </div>
     <hr />
     <div class="row">
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Street)
+        <div class="col-md-12 C">
+            @Html.DisplayFor(model => model.Street)  -  @Html.DisplayFor(model => model.PostalCode)
         </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Street)
+        <div class="col-md-12 C">
+            @Html.DisplayFor(model => model.Latitude)  -  @Html.DisplayFor(model => model.Longitude)
         </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Latitude)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Latitude)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Longitude)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Longitude)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.PostalCode)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.PostalCode)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.Email)
-        </div>
-        <div class="col-md-6 ">
-            @Html.DisplayFor(model => model.Email)
-        </div>
-        <div class="col-md-6 R">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.PhoneNumber)
+        <div class="col-md-12 C"  style="color: @ViewBag.SecondColor;">
+            @Html.DisplayFor(model => model.Email)  -  @Html.DisplayFor(model => model.PhoneNumber)
         </div>
     </div>
 </div>

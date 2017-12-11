@@ -10,21 +10,21 @@
     <link rel="stylesheet/less" type="text/css" href="~/css/Portfolio.css" />
     <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
 </environment>
-<div style="background-image: url(/images/backgrounds/@Model.ImageName)">
+<div style="background-image: url(/images/backgrounds/@Model.ImageName);">
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @Model.FirstColor">
         <ul class="nav navbar-nav">
-            <li><a asp-controller="Portfolios" asp-action="Preview" asp-route-id="@Model.PortfolioId">Home</a></li>
-            <li><a asp-controller="Posts" asp-action="Preview" asp-route-id="@Model.PortfolioId">Blog</a></li>
-            <li><a asp-controller="Abouts" asp-action="Preview" asp-route-id="@Model.PortfolioId">About</a></li>
-            <li><a a asp-controller="Locations" asp-action="Preview" asp-route-id="@Model.PortfolioId">Contact</a></li>
+            <li><a style="color: @Model.SecondColor;" asp-controller="Portfolios" asp-action="Preview" asp-route-id="@Model.PortfolioId">Home</a></li>
+            <li><a style="color: @Model.SecondColor" asp-controller="Posts" asp-action="Preview" asp-route-id="@Model.PortfolioId">Blog</a></li>
+            <li><a style="color: @Model.SecondColor" asp-controller="Abouts" asp-action="Preview" asp-route-id="@Model.PortfolioId">About</a></li>
+            <li><a style="color: @Model.SecondColor" asp-controller="Locations" asp-action="Preview" asp-route-id="@Model.PortfolioId">Location</a></li>
         </ul>
     </div>
 
     <div id="titleBlog">
-        <h1>@Html.DisplayFor(model => model.PortfolioName)</h1>
-        <h2>@Html.DisplayFor(model => model.PortfolioSurname)</h2>
+        <h1 style="color: @Model.FirstColor">@Html.DisplayFor(model => model.PortfolioName)</h1>
+        <h2 style="color: @Model.SecondColor">@Html.DisplayFor(model => model.PortfolioSurname)</h2>
     </div>
     <div class="">
 
@@ -34,5 +34,8 @@
     <input id="secondColor" hidden value="@Html.DisplayFor(model => model.SecondColor)" />
     <input id="font" hidden value="@Html.DisplayFor(model => model.FontId)" />
 
-</div>
 
+    <div id="backButton" class="col-md-3">
+        GO BACK!
+    </div>
+</div>

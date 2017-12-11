@@ -22,13 +22,23 @@ namespace WebPorfolioGenerator.Controllers
         // GET: Locations
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Locations.ToListAsync());
         }
 
         public async Task<IActionResult> Preview(int? id)
         {
-            if (id == null)            
-                return NotFound();            
+            if (id == null)
+                return NotFound();
+
+            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
+            var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+
+            ViewBag.FirstColor = portfolio.FirstColor;
+            ViewBag.SecondColor = portfolio.SecondColor;
+            ViewBag.FontName = font.FontName;
+            ViewBag.FontFamily = font.FontFamily;
+            ViewBag.Style = font.Style;
 
             return View(await _context.Locations.SingleOrDefaultAsync(m => m.PortfolioId == id));
         }

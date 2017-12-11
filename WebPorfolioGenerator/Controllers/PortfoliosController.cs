@@ -44,7 +44,16 @@ namespace WebPorfolioGenerator.Controllers
 
         public async Task<IActionResult> Preview(int? id)
         {
-            return View(await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id));
+            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
+            var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+
+            ViewBag.FirstColor = portfolio.FirstColor;
+            ViewBag.SecondColor = portfolio.SecondColor;
+            ViewBag.FontName = font.FontName;
+            ViewBag.FontFamily = font.FontFamily;
+            ViewBag.Style = font.Style;
+
+            return View(portfolio);
         }
 
         // GET: Portfolios/Details/5
@@ -118,6 +127,9 @@ namespace WebPorfolioGenerator.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Fonts = _context.Fonts.ToList();
+
             return View(portfolio);
         }
 

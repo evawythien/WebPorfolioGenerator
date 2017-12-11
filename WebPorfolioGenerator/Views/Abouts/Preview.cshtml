@@ -10,22 +10,33 @@
     <link rel="stylesheet/less" type="text/css" href="~/css/Portfolio.css" />
     <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
 </environment>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @ViewBag.FirstColor">
+    <ul class="nav navbar-nav">
+        <li><a style="color: @ViewBag.SecondColor;" asp-controller="Portfolios" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Home</a></li>
+        <li><a style="color: @ViewBag.SecondColor" asp-controller="Posts" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Blog</a></li>
+        <li><a style="color: @ViewBag.SecondColor" asp-controller="Abouts" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">About</a></li>
+        <li><a style="color: @ViewBag.SecondColor" asp-controller="Locations" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Location</a></li>
+    </ul>
+</div>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            @Html.DisplayFor(model => model.Title)
+    <div class="row about">
+        <div  class="col-md-offset-2 col-md-10 about">
+            <h1 style="color: @ViewBag.FirstColor;">@Html.DisplayFor(model => model.Title)</h1>
         </div>
-        <div class="col-sm-12">
+        <div class="col-md-offset-2 col-md-8 col-md-offset-2 about">
             @Html.DisplayFor(model => model.Body)
         </div>
-        <div class="col-sm-4 R">
-            <a href=" @Html.DisplayFor(model => model.Twitter)"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
-        </div>
-        <div class="col-sm-4 C">
-            <a href="@Html.DisplayFor(model => model.Instagram)"><i class="fa fa-instagram fa-4x" aria-hidden="true"></i></a>
-        </div>
-        <div class="col-sm-4 L">
-            <a href="@Html.DisplayFor(model => model.Facebook)"><i class="fa fa-facebook-square  fa-4x" aria-hidden="true"></i></a>
+        <div class="row about"> 
+            <h2 class="col-sm-12 C">FOLLOW US!</h2>
+            <div class="col-sm-4 R">
+                <a style="color: @ViewBag.SecondColor;" href=" @Html.DisplayFor(model => model.Twitter)"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
+            </div>
+            <div class="col-sm-4 C">
+                <a style="color: @ViewBag.SecondColor;" href="@Html.DisplayFor(model => model.Instagram)"><i class="fa fa-instagram fa-4x" aria-hidden="true"></i></a>
+            </div>
+            <div class="col-sm-4 L">
+                <a style="color: @ViewBag.SecondColor;" href="@Html.DisplayFor(model => model.Facebook)"><i class="fa fa-facebook-square  fa-4x" aria-hidden="true"></i></a>
+            </div>
         </div>
     </div>
 </div>

@@ -17,8 +17,7 @@ namespace WebPorfolioGenerator.Models
 
         [StringLength(200)]
         public string Subtitle { get; set; }
-
-        [StringLength(2000)]
+        
         public string Body { get; set; }
         
         public DateTime CreationDate { get; set; }

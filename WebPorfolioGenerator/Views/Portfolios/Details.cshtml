@@ -11,38 +11,39 @@
             @Html.DisplayNameFor(model => model.PortfolioName)
         </div>
         <div class="col-md-6">
-            @Html.DisplayFor(model => model.PortfolioName)
+            <label> @Html.DisplayFor(model => model.PortfolioName)</label>
         </div>
         <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.PortfolioSurname)
         </div>
         <div class="col-md-6">
-            @Html.DisplayFor(model => model.PortfolioSurname)
+            <label> @Html.DisplayFor(model => model.PortfolioSurname)</label>
         </div>
         <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.FirstColor)
         </div>
         <div class="col-md-6">
-            @Html.DisplayFor(model => model.FirstColor)
+            <label> @Html.DisplayFor(model => model.FirstColor)</label>
         </div>
         <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.SecondColor)
         </div>
         <div class="col-md-6 ">
-            @Html.DisplayFor(model => model.SecondColor)
+            <label> @Html.DisplayFor(model => model.SecondColor)</label>
         </div>
         <div class="col-md-6 R">
             @Html.DisplayNameFor(model => model.FontId)
         </div>
         <div class="col-md-6">
-            @Html.DisplayFor(model => model.FontId)
+            <label> @Html.DisplayFor(model => model.FontId)</label>
         </div>
     </div>
 </div>
 <div class="row buttonContainer">
     <div class="col-md-12 R">
-        <a class="linkButton" asp-action="Edit" asp-route-id="@Model.PortfolioId">Edit</a>  
-        <a class="linkButton" asp-controller="Posts" asp-action="Index" asp-route-id="@Model.PortfolioId">Post</a>        
+        <a class="linkButton" asp-action="Index">Back to List</a>
+        <a class="linkButton" asp-action="Edit" asp-route-id="@Model.PortfolioId">Edit</a>
+        <a class="linkButton" asp-controller="Posts" asp-action="Index" asp-route-id="@Model.PortfolioId">Post</a>
         <a class="linkButton" asp-controller="Locations" asp-action="Index" asp-route-id="@Model.PortfolioId">Localization</a>
         <a class="linkButton" asp-controller="Abouts" asp-action="Index" asp-route-id="@Model.PortfolioId">About me</a>
         <a class="linkButton" asp-action="Preview" asp-route-id="@Model.PortfolioId">Preview</a>

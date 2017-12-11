@@ -7,3 +7,10 @@ INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Source Code Pro',
 INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Poiret One', 'https://fonts.googleapis.com/css?family=Poiret+One', 'Poiret One', 'cursive');
 INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Josefin Slab', 'https://fonts.googleapis.com/css?family=Josefin+Slab', 'Josefin Slab', 'serif');
 INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Cutive Mono', 'https://fonts.googleapis.com/css?family=Cutive+Mono', 'Cutive Mono', 'monospace');
+
+
+
+INSERT INTO ROLS (Name) VALUES ('Administrator');
+INSERT INTO ROLS (Name) VALUES ('Designer');
+INSERT INTO ROLS (Name) VALUES ('Commercial');
+INSERT INTO ROLS (Name) VALUES ('Client');

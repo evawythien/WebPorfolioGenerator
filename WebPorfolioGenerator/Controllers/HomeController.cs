@@ -77,6 +77,12 @@ namespace WebPorfolioGenerator.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Logout(User user)
+        {
+            // Limpiamos la sesión
+            HttpContext.Session.Clear();
+            return RedirectToAction(nameof(HomeController.Login), "Home");
+        }
 
     }
 }
