@@ -137,7 +137,7 @@ namespace WebPorfolioGenerator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PortfolioId,PortfolioName,PortfolioSurname,FirstColor,SecondColor,FontId,ExtBackgroundImage")] Portfolio portfolio, IFormFile image)
+        public async Task<IActionResult> Edit(int id, [Bind("PortfolioId,PortfolioName,PortfolioSurname,FirstColor,SecondColor,FontId,ExtBackgroundImage,UserId")] Portfolio portfolio, IFormFile image)
         {
             if (id != portfolio.PortfolioId)
             {
