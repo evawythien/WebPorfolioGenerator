@@ -108,7 +108,7 @@ namespace WebPorfolioGenerator.Controllers
                     }
                 }
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id = portfolio.UserId });
             }
             return View(portfolio);
         }

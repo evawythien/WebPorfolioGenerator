@@ -81,7 +81,7 @@ namespace WebPorfolioGenerator.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id = user.UserId });
             }
             return View(user);
         }
@@ -135,7 +135,7 @@ namespace WebPorfolioGenerator.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id = id});
             }
             return View(user);
         }
@@ -172,13 +172,5 @@ namespace WebPorfolioGenerator.Controllers
         {
             return _context.Users.Any(e => e.UserId == id);
         }
-
-
-        //public async Task<IActionResult> isLogin() {
-
-        //    int? userId = HttpContext.Session.GetInt32("UserId");
-        //    if (userId == null)
-        //        return RedirectToAction("Home",nameof(Login));
-        //}
     }
 }

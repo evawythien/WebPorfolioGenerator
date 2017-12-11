@@ -29,7 +29,7 @@
     </div>
     <div class="row buttonContainer">
         <div class="col-md-12 R">
-            <a class="linkButton" asp-action="Index">Back to List</a>
+            <a class="linkButton" asp-action="Index" asp-route-id="@ViewContext.RouteData.Values["id"]">Back to List</a>
             <a class="linkButton" asp-action="Edit" asp-route-id="@Model.PostId">Edit</a>
         </div>
     </div>
