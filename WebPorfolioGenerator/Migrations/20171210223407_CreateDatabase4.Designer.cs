@@ -11,9 +11,10 @@ using WebPorfolioGenerator.DAL;
 namespace WebPorfolioGenerator.Migrations
 {
     [DbContext(typeof(WebPortfolioContext))]
-    partial class WebPortfolioContextModelSnapshot : ModelSnapshot
+    [Migration("20171210223407_CreateDatabase4")]
+    partial class CreateDatabase4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

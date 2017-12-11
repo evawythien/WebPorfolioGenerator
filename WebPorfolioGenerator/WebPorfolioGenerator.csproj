@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="bin\" />
+    <Folder Include="wwwroot\images\backgrounds\" />
   </ItemGroup>
 
 </Project>

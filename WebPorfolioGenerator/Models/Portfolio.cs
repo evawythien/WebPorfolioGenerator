@@ -18,8 +18,11 @@ namespace WebPorfolioGenerator.Models
         [StringLength(200)]
         public string PortfolioSurname { get; set; }
 
-        [MaxLength(8000)]
-        public byte[] BackgroundImage { get; set; }
+        [StringLength(6)]
+        public string ExtBackgroundImage { get; set; }
+
+        [NotMapped]
+        public string ImageName => PortfolioId + ExtBackgroundImage;
 
         [StringLength(8)]
         public string FirstColor { get; set; }

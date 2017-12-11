@@ -10,7 +10,7 @@
     <link rel="stylesheet/less" type="text/css" href="~/css/Portfolio.css" />
     <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
 </environment>
-<div>
+<div style="background-image: url(/images/backgrounds/@Model.ImageName)">
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -30,7 +30,6 @@
 
     </div>
 
-    @*<input id="backgroundImagen" hidden value="@Html.DisplayFor(model => model.BackgroundImage)" />*@
     <input id="firstColor" hidden value="@Html.DisplayFor(model => model.FirstColor)" />
     <input id="secondColor" hidden value="@Html.DisplayFor(model => model.SecondColor)" />
     <input id="font" hidden value="@Html.DisplayFor(model => model.FontId)" />
