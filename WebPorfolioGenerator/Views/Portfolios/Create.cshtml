@@ -11,9 +11,13 @@
 
 <div class="row">
     <div class="col-md-12">
+        @{
+            String routeId = (String)ViewContext.RouteData.Values["id"];
+            String userId = !String.IsNullOrEmpty(routeId) && !routeId.Equals("0") ? routeId : HttpContextAccessor.HttpContext.Session.GetInt32("UserId").ToString();
+        }
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="UserId" class="form-control col-md-6" value="@ViewContext.RouteData.Values["id"]" />
+            <input type="hidden" asp-for="UserId" class="form-control col-md-6" value="@userId" />
             <div class="form-group col-md-6">
                 <label asp-for="PortfolioName" class="control-label">Title</label>
                 <input asp-for="PortfolioName" class="form-control" />
