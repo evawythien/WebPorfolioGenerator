@@ -35,6 +35,7 @@ namespace WebPorfolioGenerator.Controllers
             ViewBag.FontName = font.FontName;
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
+            ViewBag.Link = font.Link;
 
             return View(_context.Posts.Where(p => p.PortfolioId.Equals(id)).ToList());
         }
@@ -64,7 +65,7 @@ namespace WebPorfolioGenerator.Controllers
                 return NotFound();
             }
 
-            return View(); //RedirectToAction(nameof(PostsController.Create), "Posts"); 
+            return View(); 
         }
 
         // POST: Posts/Create

@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
 <link rel="stylesheet" href="~/toopay-bootstrap-markdown/css/bootstrap-markdown.min.css" />
 <script src="~/lib/jquery/dist/jquery.js"></script>
-
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @ViewBag.FirstColor">
+<link href="@ViewBag.Link" rel="stylesheet">
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @ViewBag.FirstColor; font-family: @ViewBag.FontName; font-style: @ViewBag.FontStyle;">
     <ul class="nav navbar-nav">
         <li><a style="color: @ViewBag.SecondColor;" asp-controller="Portfolios" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Home</a></li>
         <li><a style="color: @ViewBag.SecondColor" asp-controller="Posts" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Blog</a></li>
@@ -19,15 +19,15 @@
         <li><a style="color: @ViewBag.SecondColor" asp-controller="Locations" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Location</a></li>
     </ul>
 </div>
-<div class="container">
+<div class="container" style="font-family: @ViewBag.FontName; font-style: @ViewBag.FontStyle;">
     <div class="row about">
-        <div  class="col-md-offset-2 col-md-10 about">
+        <div class="col-md-offset-2 col-md-10 about">
             <h1 style="color: @ViewBag.FirstColor;">@Html.DisplayFor(model => model.Title)</h1>
         </div>
         <div class="col-md-offset-2 col-md-8 col-md-offset-2 about">
-            @Html.DisplayFor(model => model.Body)
+            @Html.Raw(new HeyRed.MarkdownSharp.Markdown().Transform((ViewBag.Body)))
         </div>
-        <div class="row about"> 
+        <div class="row about">
             <h2 class="col-sm-12 C">FOLLOW US!</h2>
             <div class="col-sm-4 R">
                 <a style="color: @ViewBag.SecondColor;" href=" @Html.DisplayFor(model => model.Twitter)"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>

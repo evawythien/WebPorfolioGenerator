@@ -52,6 +52,7 @@ namespace WebPorfolioGenerator.Controllers
             ViewBag.FontName = font.FontName;
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
+            ViewBag.Link = font.Link;
 
             return View(portfolio);
         }

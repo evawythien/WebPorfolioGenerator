@@ -10,8 +10,9 @@
 <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
 <link rel="stylesheet" href="~/toopay-bootstrap-markdown/css/bootstrap-markdown.min.css" />
 <script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="@ViewBag.Link" rel="stylesheet">
 
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @ViewBag.FirstColor">
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @ViewBag.FirstColor; font-family: @ViewBag.FontName; font-style: @ViewBag.FontStyle;">
     <ul class="nav navbar-nav">
         <li><a style="color: @ViewBag.SecondColor;" asp-controller="Portfolios" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Home</a></li>
         <li><a style="color: @ViewBag.SecondColor" asp-controller="Posts" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Blog</a></li>
