@@ -22,7 +22,7 @@
 <div class="container" style="font-family: @ViewBag.FontName; font-style: @ViewBag.FontStyle;">
     <div class="row about">
         <div class="col-md-offset-2 col-md-10 about">
-            <h1 style="color: @ViewBag.FirstColor;">@Html.DisplayFor(model => model.Title)</h1>
+            <h1 style="color: @ViewBag.FirstColor;">@ViewBag.Title</h1>
         </div>
         <div class="col-md-offset-2 col-md-8 col-md-offset-2 about">
             @Html.Raw(new HeyRed.MarkdownSharp.Markdown().Transform((ViewBag.Body)))
@@ -30,13 +30,13 @@
         <div class="row about">
             <h2 class="col-sm-12 C">FOLLOW US!</h2>
             <div class="col-sm-4 R">
-                <a style="color: @ViewBag.SecondColor;" href=" @Html.DisplayFor(model => model.Twitter)"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
+                <a style="color: @ViewBag.SecondColor;" href=" @ViewBag.Twitter"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
             </div>
             <div class="col-sm-4 C">
-                <a style="color: @ViewBag.SecondColor;" href="@Html.DisplayFor(model => model.Instagram)"><i class="fa fa-instagram fa-4x" aria-hidden="true"></i></a>
+                <a style="color: @ViewBag.SecondColor;" href="@ViewBag.Instagram"><i class="fa fa-instagram fa-4x" aria-hidden="true"></i></a>
             </div>
             <div class="col-sm-4 L">
-                <a style="color: @ViewBag.SecondColor;" href="@Html.DisplayFor(model => model.Facebook)"><i class="fa fa-facebook-square  fa-4x" aria-hidden="true"></i></a>
+                <a style="color: @ViewBag.SecondColor;" href="@ViewBag.Facebook"><i class="fa fa-facebook-square  fa-4x" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>

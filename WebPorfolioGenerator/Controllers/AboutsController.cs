@@ -37,8 +37,21 @@ namespace WebPorfolioGenerator.Controllers
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
             ViewBag.Link = font.Link;
-            ViewBag.Body = about.Body != null ? about.Body : "";
-
+            if (about != null)
+            {
+                ViewBag.Body = about.Body != null ? about.Body : "";
+                ViewBag.Twitter = about.Twitter != null ? about.Twitter : "";
+                ViewBag.Instagram = about.Instagram != null ? about.Instagram : "";
+                ViewBag.Facebook = about.Facebook != null ? about.Facebook : "";
+                ViewBag.Title = about.Title != null ? about.Title : "";
+            }
+            else {
+                ViewBag.Body =  "";
+                ViewBag.Twitter =  "";
+                ViewBag.Instagram =  "";
+                ViewBag.Facebook =  "";
+                ViewBag.Title =  "";
+            }
             return View(about);
         }
 
