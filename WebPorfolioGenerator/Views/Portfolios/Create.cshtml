@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Create";
 }
+
 <h2>Create</h2>
 <h4>Portfolio</h4>
 <hr />
@@ -11,7 +12,6 @@
 
 <div class="row">
     <div class="col-md-12">
-        <script type="text/javascript">alert('Paco')</script>
         @{
             String routeId = (String)ViewContext.RouteData.Values["id"];
             String userId = !String.IsNullOrEmpty(routeId) && !routeId.Equals("0") ? routeId : HttpContextAccessor.HttpContext.Session.GetInt32("UserId").ToString();
