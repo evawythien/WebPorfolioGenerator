@@ -26,10 +26,7 @@ namespace WebPorfolioGenerator.Controllers
         }
 
         public async Task<IActionResult> Preview(int? id)
-        {
-            if (id == null)
-                return NotFound();
-
+        {    
             var about = await _context.Abouts.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
             var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
             var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
@@ -39,11 +36,7 @@ namespace WebPorfolioGenerator.Controllers
             ViewBag.FontName = font.FontName;
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
-
-            if (about == null)
-            {
-                return NotFound();
-            }
+            
             return View(about);
         }
 
