@@ -37,7 +37,7 @@ namespace WebPorfolioGenerator.Controllers
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
             ViewBag.Link = font.Link;
-            ViewBag.Body = about.Body;
+            ViewBag.Body = about.Body != null ? about.Body : "";
 
             return View(about);
         }
