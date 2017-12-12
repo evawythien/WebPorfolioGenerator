@@ -13,8 +13,8 @@
     <div class="col-md-12">
         <script type="text/javascript">alert('Paco')</script>
         @{
-            String routeId = (String)ViewContext.RouteData.Values["id"];
-            String userId = !String.IsNullOrEmpty(routeId) && !routeId.Equals("0") ? routeId : HttpContextAccessor.HttpContext.Session.GetInt32("UserId").ToString();
+            string routeId = ViewContext.RouteData.Values["id"].ToString();
+            string userId = !String.IsNullOrEmpty(routeId) && !routeId.Equals("0") ? routeId : HttpContextAccessor.HttpContext.Session.GetInt32("UserId").ToString();
         }
 
         <form asp-action="Create" enctype="multipart/form-data">
