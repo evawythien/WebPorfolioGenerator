@@ -16,6 +16,7 @@
             String routeId = (String)ViewContext.RouteData.Values["id"];
             String userId = !String.IsNullOrEmpty(routeId) && !routeId.Equals("0") ? routeId : HttpContextAccessor.HttpContext.Session.GetInt32("UserId").ToString();
         }
+
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UserId" class="form-control col-md-6" value="@userId" />
