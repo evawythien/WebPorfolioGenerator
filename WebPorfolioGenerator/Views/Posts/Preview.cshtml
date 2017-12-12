@@ -3,14 +3,14 @@
     Layout = null;
 }
 
-<environment include="Development">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet/less" type="text/css" href="~/css/Login.css" />
-    <link rel="stylesheet/less" type="text/css" href="~/css/Portfolio.css" />
-    <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
-    <script src="~/toopay-bootstrap-markdown/js/markdown.js"></script>
-</environment>
+<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+      asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+      asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+<link rel="stylesheet" href="~/css/site.min.css" />
+<link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="~/toopay-bootstrap-markdown/css/bootstrap-markdown.min.css" />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @ViewBag.FirstColor">
     <ul class="nav navbar-nav">
         <li><a style="color: @ViewBag.SecondColor;" asp-controller="Portfolios" asp-action="Preview" asp-route-id="@ViewContext.RouteData.Values["id"]">Home</a></li>

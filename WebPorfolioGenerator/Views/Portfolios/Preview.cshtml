@@ -3,13 +3,15 @@
     ViewData["Title"] = "Details";
     Layout = null;
 }
-<environment include="Development">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet/less" type="text/css" href="~/css/Login.css" />
-    <link rel="stylesheet/less" type="text/css" href="~/css/Portfolio.css" />
-    <link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
-</environment>
+
+<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+      asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+      asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+<link rel="stylesheet" href="~/css/site.min.css" />
+<link rel="stylesheet" href="~/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="~/toopay-bootstrap-markdown/css/bootstrap-markdown.min.css" />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
 <div style="background-image: url(/images/backgrounds/@Model.ImageName);">
 
     <!-- Collect the nav links, forms, and other content for toggling -->
