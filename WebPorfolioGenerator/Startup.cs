@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace WebPorfolioGenerator
 {
@@ -19,6 +21,7 @@ namespace WebPorfolioGenerator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<WebPortfolioContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMemoryCache();
             services.AddSession();
