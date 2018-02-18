@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using WebPorfolioGenerator.Models;
 using WebPorfolioGenerator.DAL;
 using System;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Http;
 
 namespace WebPorfolioGenerator.Controllers

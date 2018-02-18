@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
@@ -28,16 +26,12 @@ namespace WebPorfolioGenerator.Controllers
         // GET: Fonts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null)            
+                return NotFound();            
 
             var font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
-            if (font == null)
-            {
-                return NotFound();
-            }
+            if (font == null)            
+                return NotFound();            
 
             return View(font);
         }
@@ -67,16 +61,13 @@ namespace WebPorfolioGenerator.Controllers
         // GET: Fonts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null)            
+                return NotFound();            
 
             var font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
-            if (font == null)
-            {
+            if (font == null)            
                 return NotFound();
-            }
+            
             return View(font);
         }
 
@@ -87,10 +78,8 @@ namespace WebPorfolioGenerator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FontName,Link,FontFamily,Style")] Font font)
         {
-            if (id != font.Id)
-            {
-                return NotFound();
-            }
+            if (id != font.Id)            
+                return NotFound();k            
 
             if (ModelState.IsValid)
             {
@@ -102,13 +91,9 @@ namespace WebPorfolioGenerator.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!FontExists(font.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -119,15 +104,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
             if (font == null)
-            {
                 return NotFound();
-            }
 
             return View(font);
         }
