@@ -44,15 +44,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
             if (post == null)
-            {
                 return NotFound();
-            }
 
             return View(post);
         }
@@ -61,11 +57,9 @@ namespace WebPorfolioGenerator.Controllers
         public IActionResult Create(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            return View(); 
+            return View();
         }
 
         // POST: Posts/Create
@@ -79,7 +73,7 @@ namespace WebPorfolioGenerator.Controllers
             {
                 _context.Add(post);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index), new { id = post.PortfolioId});
+                return RedirectToAction(nameof(Index), new { id = post.PortfolioId });
             }
             return View(post);
         }
@@ -88,15 +82,12 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
             if (post == null)
-            {
                 return NotFound();
-            }
+
             return View(post);
         }
 
@@ -108,9 +99,7 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("PostId,PortfolioId,Title,Subtitle,Body,CreationDate,ModificationDate")] Post post)
         {
             if (id != post.PostId)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -122,16 +111,14 @@ namespace WebPorfolioGenerator.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!PostExists(post.PostId))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
+
                 return RedirectToAction(nameof(Index), new { id = post.PortfolioId });
             }
+
             return View(post);
         }
 
@@ -139,15 +126,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
             if (post == null)
-            {
                 return NotFound();
-            }
 
             return View(post);
         }

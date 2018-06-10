@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
 
@@ -26,7 +23,7 @@ namespace WebPorfolioGenerator.Controllers
         }
 
         public async Task<IActionResult> Preview(int? id)
-        {    
+        {
             var about = await _context.Abouts.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
             var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
             var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
@@ -37,21 +34,24 @@ namespace WebPorfolioGenerator.Controllers
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
             ViewBag.Link = font.Link;
+
             if (about != null)
             {
                 ViewBag.Body = about.Body != null ? about.Body : "";
-                ViewBag.Twitter = about.Twitter != null ? about.Twitter : "";
-                ViewBag.Instagram = about.Instagram != null ? about.Instagram : "";
-                ViewBag.Facebook = about.Facebook != null ? about.Facebook : "";
-                ViewBag.Title = about.Title != null ? about.Title : "";
+                ViewBag.Twitter = about.Twitter ?? "";
+                ViewBag.Instagram = about.Instagram ?? "";
+                ViewBag.Facebook = about.Facebook ?? "";
+                ViewBag.Title = about.Title ?? "";
             }
-            else {
-                ViewBag.Body =  "";
-                ViewBag.Twitter =  "";
-                ViewBag.Instagram =  "";
-                ViewBag.Facebook =  "";
-                ViewBag.Title =  "";
+            else
+            {
+                ViewBag.Body = "";
+                ViewBag.Twitter = "";
+                ViewBag.Instagram = "";
+                ViewBag.Facebook = "";
+                ViewBag.Title = "";
             }
+
             return View(about);
         }
 
@@ -59,15 +59,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             if (about == null)
-            {
                 return NotFound();
-            }
 
             return View(about);
         }
@@ -98,15 +94,12 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             if (about == null)
-            {
                 return NotFound();
-            }
+
             return View(about);
         }
 
@@ -118,9 +111,7 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("AboutId,PortfolioId,Title,Body,Twitter,Instagram,Facebook")] About about)
         {
             if (id != about.AboutId)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -132,14 +123,11 @@ namespace WebPorfolioGenerator.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!AboutExists(about.AboutId))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(about);
@@ -149,15 +137,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             if (about == null)
-            {
                 return NotFound();
-            }
 
             return View(about);
         }

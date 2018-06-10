@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
-using Microsoft.AspNetCore.Http;
 
 namespace WebPorfolioGenerator.Controllers
 {
@@ -33,10 +31,10 @@ namespace WebPorfolioGenerator.Controllers
                     model = await _context.Users.ToListAsync();
                     break;
                 case 2:
-                    model = await _context.Users.Where(u => u.RolId == 2 ||  u.RolId == 4).ToListAsync();
+                    model = await _context.Users.Where(u => u.RolId == 2 || u.RolId == 4).ToListAsync();
                     break;
                 case 3:
-                    model = await _context.Users.Where(u => u.RolId ==  2 || u.RolId ==  3 || u.RolId == 4).ToListAsync();
+                    model = await _context.Users.Where(u => u.RolId == 2 || u.RolId == 3 || u.RolId == 4).ToListAsync();
                     break;
                 case 4:
                     model = await _context.Users.Where(u => u.UserId.Equals(userId)).ToListAsync();
@@ -50,15 +48,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
             if (user == null)
-            {
                 return NotFound();
-            }
 
             return View(user);
         }
@@ -90,15 +84,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
             if (user == null)
-            {
                 return NotFound();
-            }
 
             ViewBag.Rols = _context.Rols.ToList();
 
@@ -113,9 +103,7 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,Name,Surname,Password,RolId,Email,Birth,MovilePhone,Phone")] User user)
         {
             if (id != user.UserId)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -127,16 +115,14 @@ namespace WebPorfolioGenerator.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!UserExists(user.UserId))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
-                return RedirectToAction(nameof(Index), new { id = id});
+
+                return RedirectToAction(nameof(Index), new { id = id });
             }
+
             return View(user);
         }
 
@@ -144,15 +130,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
             if (user == null)
-            {
                 return NotFound();
-            }
 
             return View(user);
         }

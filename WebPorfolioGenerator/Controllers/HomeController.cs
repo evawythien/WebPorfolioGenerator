@@ -1,12 +1,11 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using WebPorfolioGenerator.Models;
 using WebPorfolioGenerator.DAL;
-using System;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.Http;
+using WebPorfolioGenerator.Models;
 
 namespace WebPorfolioGenerator.Controllers
 {

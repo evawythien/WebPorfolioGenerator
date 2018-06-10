@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
-using Microsoft.AspNetCore.Http;
 
 namespace WebPorfolioGenerator.Controllers
 {
@@ -61,15 +59,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
             if (portfolio == null)
-            {
                 return NotFound();
-            }
 
             return View(portfolio);
         }
@@ -91,9 +85,7 @@ namespace WebPorfolioGenerator.Controllers
             if (ModelState.IsValid)
             {
                 if (image != null && image.Length > 0)
-                {
                     portfolio.ExtBackgroundImage = Path.GetExtension(image.FileName);
-                }
 
                 _context.Add(portfolio);
                 await _context.SaveChangesAsync();
@@ -111,6 +103,7 @@ namespace WebPorfolioGenerator.Controllers
 
                 return RedirectToAction(nameof(Index), new { id = portfolio.UserId });
             }
+
             return View(portfolio);
         }
 
@@ -118,15 +111,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
             if (portfolio == null)
-            {
                 return NotFound();
-            }
 
             ViewBag.Fonts = _context.Fonts.ToList();
 
@@ -141,18 +130,14 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("PortfolioId,PortfolioName,PortfolioSurname,FirstColor,SecondColor,FontId,ExtBackgroundImage,UserId")] Portfolio portfolio, IFormFile image)
         {
             if (id != portfolio.PortfolioId)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     if (image != null && image.Length > 0)
-                    {
                         portfolio.ExtBackgroundImage = Path.GetExtension(image.FileName);
-                    }
 
                     _context.Update(portfolio);
                     await _context.SaveChangesAsync();
@@ -172,16 +157,14 @@ namespace WebPorfolioGenerator.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!PortfolioExists(portfolio.PortfolioId))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(portfolio);
         }
 
@@ -189,15 +172,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
             if (portfolio == null)
-            {
                 return NotFound();
-            }
 
             return View(portfolio);
         }

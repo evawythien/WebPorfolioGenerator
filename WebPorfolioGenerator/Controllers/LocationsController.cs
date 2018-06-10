@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebPorfolioGenerator.DAL;
 using WebPorfolioGenerator.Models;
 
@@ -48,15 +45,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
             if (location == null)
-            {
                 return NotFound();
-            }
 
             return View(location);
         }
@@ -87,15 +80,12 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
             if (location == null)
-            {
                 return NotFound();
-            }
+
             return View(location);
         }
 
@@ -107,9 +97,7 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("IdLocation,Street,Latitude,Longitude,PostalCode,Email,PhoneNumber")] Location location)
         {
             if (id != location.IdLocation)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -121,16 +109,13 @@ namespace WebPorfolioGenerator.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!LocationExists(location.IdLocation))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(location);
         }
 
@@ -138,15 +123,11 @@ namespace WebPorfolioGenerator.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
             if (location == null)
-            {
                 return NotFound();
-            }
 
             return View(location);
         }

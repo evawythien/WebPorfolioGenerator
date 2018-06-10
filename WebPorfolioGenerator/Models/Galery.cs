@@ -13,6 +13,5 @@ namespace WebPorfolioGenerator.Models
 
         public int PortfolioId { get; set; }
 
-        //public blob image { get; set; }
     }
 }
