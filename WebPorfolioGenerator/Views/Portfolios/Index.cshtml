@@ -5,6 +5,7 @@
 <h2>Index</h2>
 
 <table class="table">
+
     <thead>
         <tr>
             <th>
@@ -22,6 +23,7 @@
             <th></th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var item in Model)
         {
@@ -46,7 +48,9 @@
             </tr>
         }
     </tbody>
+
 </table>
+
 <div class="row buttonContainer">
     <div class="col-md-12 R">
         <a class="linkButton" asp-action="Create" asp-route-id="@ViewContext.RouteData.Values["id"]">Create</a>

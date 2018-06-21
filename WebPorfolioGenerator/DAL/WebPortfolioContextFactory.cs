@@ -13,9 +13,12 @@ namespace WebPorfolioGenerator.DAL
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
-            var builder = new DbContextOptionsBuilder<WebPortfolioContext>();
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+            string connectionString = configuration.GetConnectionString("DefaultConnection");
+
+            DbContextOptionsBuilder<WebPortfolioContext> builder = new DbContextOptionsBuilder<WebPortfolioContext>();
             builder.UseSqlServer(connectionString);
+
             return new WebPortfolioContext(builder.Options);
         }
     }

@@ -35,22 +35,11 @@ namespace WebPorfolioGenerator.Controllers
             ViewBag.Style = font.Style;
             ViewBag.Link = font.Link;
 
-            if (about != null)
-            {
-                ViewBag.Body = about.Body != null ? about.Body : "";
-                ViewBag.Twitter = about.Twitter ?? "";
-                ViewBag.Instagram = about.Instagram ?? "";
-                ViewBag.Facebook = about.Facebook ?? "";
-                ViewBag.Title = about.Title ?? "";
-            }
-            else
-            {
-                ViewBag.Body = "";
-                ViewBag.Twitter = "";
-                ViewBag.Instagram = "";
-                ViewBag.Facebook = "";
-                ViewBag.Title = "";
-            }
+            ViewBag.Body = about != null ? about.Body ?? "" : "";
+            ViewBag.Twitter = about != null ? about.Twitter ?? "" : "";
+            ViewBag.Instagram = about != null ? about.Instagram ?? "" : "";
+            ViewBag.Facebook = about != null ? about.Facebook ?? "" : "";
+            ViewBag.Title = about != null ? about.Title ?? "" : "";
 
             return View(about);
         }
@@ -74,9 +63,6 @@ namespace WebPorfolioGenerator.Controllers
             return View();
         }
 
-        // POST: Abouts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AboutId,PortfolioId,Title,Body,Twitter,Instagram,Facebook")] About about)
@@ -103,9 +89,6 @@ namespace WebPorfolioGenerator.Controllers
             return View(about);
         }
 
-        // POST: Abouts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AboutId,PortfolioId,Title,Body,Twitter,Instagram,Facebook")] About about)

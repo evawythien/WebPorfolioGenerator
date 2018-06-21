@@ -12,22 +12,19 @@ namespace WebPorfolioGenerator.DAL
 
             // Look for any students.
             if (context.Users.Any())
-            {
-                return;   // DB has been seeded
-            }
+                return;   // DB has been seeded            
 
-            var students = new User[]
+            User[] students = new User[]
             {
-                new User{ UserId = 1, UserName = "Peggy", Name = "Justice", Surname = "Barzdukas", Password = "abcd123",RolId = 1, Email = "", Birth=DateTime.Parse("2002-09-01"), MovilePhone = "666666666", Phone = "999999999"},
-
+                new User{ UserId = 1, UserName = "Peggy", Name = "Justice", Surname = "Barzdukas", Password = "abcd123",RolId = 1, Email = "", Birth=DateTime.Parse("2002-09-01"), MovilePhone = "666666666", Phone = "999999999"}
             };
+
             foreach (User s in students)
             {
                 context.Users.Add(s);
             }
+
             context.SaveChanges();
-
-
         }
     }
 }

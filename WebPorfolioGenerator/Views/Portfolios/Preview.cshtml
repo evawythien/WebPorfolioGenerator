@@ -12,9 +12,9 @@
 <link rel="stylesheet" href="~/toopay-bootstrap-markdown/css/bootstrap-markdown.min.css" />
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <link href="@ViewBag.Link" rel="stylesheet">
+
 <div style="background-image: url(/images/backgrounds/@Model.ImageName); font-family: @ViewBag.FontName; font-style: @ViewBag.FontStyle;">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: @Model.FirstColor">
         <ul class="nav navbar-nav">
             <li><a style="color: @Model.SecondColor;" asp-controller="Portfolios" asp-action="Preview" asp-route-id="@Model.PortfolioId">Home</a></li>
@@ -28,7 +28,7 @@
         <h1 style="color: @Model.FirstColor">@Html.DisplayFor(model => model.PortfolioName)</h1>
         <h2 style="color: @Model.SecondColor">@Html.DisplayFor(model => model.PortfolioSurname)</h2>
     </div>
-  
+
     <input id="firstColor" hidden value="@Html.DisplayFor(model => model.FirstColor)" />
     <input id="secondColor" hidden value="@Html.DisplayFor(model => model.SecondColor)" />
     <input id="font" hidden value="@Html.DisplayFor(model => model.FontId)" />

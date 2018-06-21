@@ -1,5 +1,4 @@
-﻿// Write your JavaScript code.
-$("#login-button").click(function (event) {
+﻿$("#login-button").click(function (event) {
     event.preventDefault();
 
     $('form').fadeOut(500);
@@ -7,7 +6,7 @@ $("#login-button").click(function (event) {
 });
 
 $("#newItemMenu").click(function (event) {
-    
+
     //var numero = $("#menuElement").size() + 1;
 
     //if ($("#menuElement").size() == 1) {
@@ -17,7 +16,7 @@ $("#newItemMenu").click(function (event) {
     //}
     //var elemento = $('#menuElement').clone();
     //var numeroMas = $("#menuElement").size() + 1;
-    
+
     //$('#menuElement').append(elemento);
 });
 

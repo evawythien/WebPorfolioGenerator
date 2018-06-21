@@ -69,18 +69,10 @@ namespace WebPorfolioGenerator.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
         public IActionResult ChoosePortfolio()
         {
             ViewData["Message"] = "ChoosePortfolio";
             return View();
-        }
-
-        public async Task<IActionResult> Logout(User user)
-        {
-            // Limpiamos la sesión
-            HttpContext.Session.Clear();
-            return RedirectToAction(nameof(HomeController.Login), "Home");
         }
 
     }

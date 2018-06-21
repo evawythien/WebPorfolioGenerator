@@ -42,9 +42,6 @@ namespace WebPorfolioGenerator.Controllers
             return View();
         }
 
-        // POST: Fonts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FontName,Link,FontFamily,Style")] Font font)
@@ -72,9 +69,6 @@ namespace WebPorfolioGenerator.Controllers
             return View(font);
         }
 
-        // POST: Fonts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FontName,Link,FontFamily,Style")] Font font)

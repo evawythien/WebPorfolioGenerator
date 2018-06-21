@@ -1,20 +1,17 @@
 ﻿* {
     background-color: #398b96;
     background-image: url("https://www.transparenttextures.com/patterns/az-subtle.png");
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 .contenedorLogin {
     margin-top: 80px;
     padding: 30px;
     background: white;
-    /*width: 25%;*/
 }
 
     .contenedorLogin form, .contenedorLogin div, .contenedorLogin form input, .contenedorLogin h1, .contenedorLogin label {
         background: transparent;
     }
-
 
 #login input {
     border: 3px solid black;
@@ -25,4 +22,3 @@
     #login input:hover {
         background-color: #e8ba00;
     }
-
