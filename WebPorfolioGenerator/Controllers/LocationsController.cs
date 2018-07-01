@@ -19,7 +19,6 @@ namespace WebPorfolioGenerator.Controllers
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-
             return View(await _context.Locations.ToListAsync());
         }
 
@@ -28,11 +27,13 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
-            var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+            Portfolio portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
 
             ViewBag.FirstColor = portfolio.FirstColor;
             ViewBag.SecondColor = portfolio.SecondColor;
+
+            Font font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+
             ViewBag.FontName = font.FontName;
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
@@ -47,7 +48,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
+            Location location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
             if (location == null)
                 return NotFound();
 
@@ -79,7 +80,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
+            Location location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
             if (location == null)
                 return NotFound();
 
@@ -119,7 +120,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
+            Location location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
             if (location == null)
                 return NotFound();
 
@@ -131,8 +132,9 @@ namespace WebPorfolioGenerator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
+            Location location = await _context.Locations.SingleOrDefaultAsync(m => m.IdLocation == id);
             _context.Locations.Remove(location);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

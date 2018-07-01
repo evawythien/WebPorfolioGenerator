@@ -29,7 +29,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
+            Font font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
             if (font == null)
                 return NotFound();
 
@@ -62,7 +62,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
+            Font font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
             if (font == null)
                 return NotFound();
 
@@ -103,7 +103,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
+            Font font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
             if (font == null)
                 return NotFound();
 
@@ -116,8 +116,9 @@ namespace WebPorfolioGenerator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
+            Font font = await _context.Fonts.SingleOrDefaultAsync(m => m.Id == id);
             _context.Fonts.Remove(font);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -129,8 +130,8 @@ namespace WebPorfolioGenerator.Controllers
 
         public List<KeyValuePair<int, string>> GetFontList()
         {
-
             List<Font> font = _context.Fonts.ToList();
+
             List<KeyValuePair<int, string>> newList = new List<KeyValuePair<int, string>>();
             {
                 font.ForEach(f =>

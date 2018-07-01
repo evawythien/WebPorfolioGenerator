@@ -50,7 +50,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
+            User user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
             if (user == null)
                 return NotFound();
 
@@ -83,7 +83,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
+            User user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
             if (user == null)
                 return NotFound();
 
@@ -126,7 +126,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
+            User user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
             if (user == null)
                 return NotFound();
 
@@ -138,8 +138,9 @@ namespace WebPorfolioGenerator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
+            User user = await _context.Users.SingleOrDefaultAsync(m => m.UserId == id);
             _context.Users.Remove(user);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

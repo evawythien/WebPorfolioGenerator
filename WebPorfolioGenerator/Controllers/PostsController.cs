@@ -27,11 +27,13 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
-            var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+            Portfolio portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
 
             ViewBag.FirstColor = portfolio.FirstColor;
             ViewBag.SecondColor = portfolio.SecondColor;
+
+            Font font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+
             ViewBag.FontName = font.FontName;
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
@@ -46,7 +48,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
+            Post post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
             if (post == null)
                 return NotFound();
 
@@ -81,7 +83,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
+            Post post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
             if (post == null)
                 return NotFound();
 
@@ -122,7 +124,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
+            Post post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
             if (post == null)
                 return NotFound();
 
@@ -134,8 +136,9 @@ namespace WebPorfolioGenerator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
+            Post post = await _context.Posts.SingleOrDefaultAsync(m => m.PostId == id);
             _context.Posts.Remove(post);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

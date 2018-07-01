@@ -42,11 +42,13 @@ namespace WebPorfolioGenerator.Controllers
 
         public async Task<IActionResult> Preview(int? id)
         {
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
-            var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+            Portfolio portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
 
             ViewBag.FirstColor = portfolio.FirstColor;
             ViewBag.SecondColor = portfolio.SecondColor;
+
+            Font font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+
             ViewBag.FontName = font.FontName;
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
@@ -61,7 +63,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
+            Portfolio portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
             if (portfolio == null)
                 return NotFound();
 
@@ -110,7 +112,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
+            Portfolio portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
             if (portfolio == null)
                 return NotFound();
 
@@ -168,7 +170,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
+            Portfolio portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
             if (portfolio == null)
                 return NotFound();
 
@@ -180,8 +182,9 @@ namespace WebPorfolioGenerator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
+            Portfolio portfolio = await _context.Portfolios.SingleOrDefaultAsync(m => m.PortfolioId == id);
             _context.Portfolios.Remove(portfolio);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

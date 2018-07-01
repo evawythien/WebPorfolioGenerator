@@ -24,9 +24,9 @@ namespace WebPorfolioGenerator.Controllers
 
         public async Task<IActionResult> Preview(int? id)
         {
-            var about = await _context.Abouts.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
-            var portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
-            var font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
+            About about = await _context.Abouts.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
+            Portfolio portfolio = await _context.Portfolios.SingleOrDefaultAsync(p => p.PortfolioId.Equals(id));
+            Font font = await _context.Fonts.SingleOrDefaultAsync(p => p.Id.Equals(portfolio.FontId));
 
             ViewBag.FirstColor = portfolio.FirstColor;
             ViewBag.SecondColor = portfolio.SecondColor;
@@ -82,7 +82,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
+            About about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             if (about == null)
                 return NotFound();
 
@@ -122,7 +122,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
+            About about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             if (about == null)
                 return NotFound();
 
@@ -134,8 +134,9 @@ namespace WebPorfolioGenerator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
+            About about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             _context.Abouts.Remove(about);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
