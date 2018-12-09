@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebPorfolioGenerator.Models;
+using WebPortfolioGenerator.Domain.Entity;
 
 namespace WebPorfolioGenerator.DAL
 {

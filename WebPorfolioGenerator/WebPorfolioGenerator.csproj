@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\**" />
     <Compile Remove="wwwroot\images\backgrounds\**" />
+    <Content Remove="Models\**" />
     <Content Remove="wwwroot\images\backgrounds\**" />
+    <EmbeddedResource Remove="Models\**" />
     <EmbeddedResource Remove="wwwroot\images\backgrounds\**" />
+    <None Remove="Models\**" />
     <None Remove="wwwroot\images\backgrounds\**" />
   </ItemGroup>
 
@@ -24,6 +28,10 @@
 
   <ItemGroup>
     <Folder Include="bin\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebPortfolioGenerator.Domain\WebPortfolioGenerator.Domain.csproj" />
   </ItemGroup>
 
 </Project>

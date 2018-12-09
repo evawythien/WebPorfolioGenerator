@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using WebPorfolioGenerator.DAL;
-using WebPorfolioGenerator.Models;
+using WebPortfolioGenerator.Domain.Entity;
 
 namespace WebPorfolioGenerator.Controllers
 {
@@ -30,6 +30,7 @@ namespace WebPorfolioGenerator.Controllers
 
             ViewBag.FirstColor = portfolio.FirstColor;
             ViewBag.SecondColor = portfolio.SecondColor;
+
             ViewBag.FontName = font.FontName;
             ViewBag.FontFamily = font.FontFamily;
             ViewBag.Style = font.Style;
@@ -50,7 +51,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            var about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
+            About about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
             if (about == null)
                 return NotFound();
 
