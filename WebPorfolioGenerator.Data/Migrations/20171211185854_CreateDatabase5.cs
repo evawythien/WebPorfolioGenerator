@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
-namespace WebPorfolioGenerator.Migrations
+namespace WebPorfolioGenerator.Data.Migrations
 {
     public partial class CreateDatabase5 : Migration
     {

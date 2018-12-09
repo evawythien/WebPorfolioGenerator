@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using WebPorfolioGenerator.Models;
+using WebPortfolioGenerator.Domain.Entity;
 
-namespace WebPorfolioGenerator.DAL
+namespace WebPorfolioGenerator.Data.DAL
 {
     public class WebPortfolioInitializer
     {

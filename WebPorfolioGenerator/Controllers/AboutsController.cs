@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using WebPorfolioGenerator.DAL;
+using WebPorfolioGenerator.Data.DAL;
 using WebPortfolioGenerator.Domain.Entity;
 
 namespace WebPorfolioGenerator.Controllers
@@ -51,7 +51,7 @@ namespace WebPorfolioGenerator.Controllers
             if (id == null)
                 return NotFound();
 
-            About about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
+            About about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id).ConfigureAwait(false);
             if (about == null)
                 return NotFound();
 
@@ -135,7 +135,7 @@ namespace WebPorfolioGenerator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            About about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id);
+            About about = await _context.Abouts.SingleOrDefaultAsync(m => m.AboutId == id).ConfigureAwait(false);
             _context.Abouts.Remove(about);
 
             await _context.SaveChangesAsync();

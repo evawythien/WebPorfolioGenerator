@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebPortfolioGenerator.Domain.Abstract;
 
 namespace WebPortfolioGenerator.Infrastructure.Model
 {
     [Table("Abouts")]
-    public class About
+    public class About : Entity<About>
     {
         [Key]
         public int AboutId { get; set; }

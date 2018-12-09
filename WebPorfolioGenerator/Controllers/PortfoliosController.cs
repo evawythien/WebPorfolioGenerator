@@ -7,8 +7,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using WebPorfolioGenerator.DAL;
-using WebPorfolioGenerator.Models;
+using WebPorfolioGenerator.Data.DAL;
+using WebPortfolioGenerator.Domain.Entity;
 
 namespace WebPorfolioGenerator.Controllers
 {

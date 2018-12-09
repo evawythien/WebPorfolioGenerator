@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebPorfolioGenerator.DAL;
-using WebPorfolioGenerator.Models;
+using System.Linq;
+using System.Threading.Tasks;
+using WebPorfolioGenerator.Data.DAL;
+using WebPortfolioGenerator.Domain.Entity;
 
 namespace WebPorfolioGenerator.Controllers
 {
