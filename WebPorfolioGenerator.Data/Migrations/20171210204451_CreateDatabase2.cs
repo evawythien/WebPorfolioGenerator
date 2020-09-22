@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace WebPorfolioGenerator.Data.Migrations
+namespace WebPorfolioGenerator.Migrations
 {
     public partial class CreateDatabase2 : Migration
     {

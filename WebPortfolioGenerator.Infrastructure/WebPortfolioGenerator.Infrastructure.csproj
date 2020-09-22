@@ -8,8 +8,4 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\WebPortfolioGenerator.Domain\WebPortfolioGenerator.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

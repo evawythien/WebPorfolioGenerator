@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using WebPorfolioGenerator.Data.DAL;
-using WebPortfolioGenerator.Domain.Entity;
+using WebPorfolioGenerator.DAL;
+using WebPorfolioGenerator.Models;
 
 namespace WebPorfolioGenerator.Controllers
 {

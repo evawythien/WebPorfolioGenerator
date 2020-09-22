@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
-using WebPorfolioGenerator.Data.DAL;
+using WebPorfolioGenerator.DAL;
 
-namespace WebPorfolioGenerator.Data.Migrations
+namespace WebPorfolioGenerator.Migrations
 {
     [DbContext(typeof(WebPortfolioContext))]
     [Migration("20171210213941_CreateDatabase3")]

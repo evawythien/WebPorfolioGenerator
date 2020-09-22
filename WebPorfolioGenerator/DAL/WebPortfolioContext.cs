@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebPortfolioGenerator.Domain.Entity;
 
-namespace WebPorfolioGenerator.Data.DAL
+namespace WebPorfolioGenerator.DAL
 {
     public class WebPortfolioContext : DbContext
     {

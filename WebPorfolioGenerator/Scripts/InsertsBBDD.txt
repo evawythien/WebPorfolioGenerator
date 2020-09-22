@@ -1,0 +1,16 @@
+﻿INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Montserrat', 'https://fonts.googleapis.com/css?family=Montserrat', 'Montserrat', 'sans-serif');
+INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Open Sans Condensed', 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300', 'Open Sans Condensed', 'sans-serif');
+INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Anton', 'https://fonts.googleapis.com/css?family=Anton', 'Anton', 'sans-serif');
+INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Zilla Slab Highlight', 'https://fonts.googleapis.com/css?family=Zilla+Slab+Highlight', 'Zilla Slab Highlight', 'cursive');
+INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Shadows Into Light', 'https://fonts.googleapis.com/css?family=Shadows+Into+Light', 'Shadows Into Light', 'cursive');
+INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Source Code Pro', 'https://fonts.googleapis.com/css?family=Source+Code+Pro', 'Source Code Pro', 'monospace');
+INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Poiret One', 'https://fonts.googleapis.com/css?family=Poiret+One', 'Poiret One', 'cursive');
+INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Josefin Slab', 'https://fonts.googleapis.com/css?family=Josefin+Slab', 'Josefin Slab', 'serif');
+INSERT INTO fonts (FontName, Link, FontFamily, STYLE) values ('Cutive Mono', 'https://fonts.googleapis.com/css?family=Cutive+Mono', 'Cutive Mono', 'monospace');
+
+
+
+INSERT INTO ROLS (Name) VALUES ('Administrator');
+INSERT INTO ROLS (Name) VALUES ('Designer');
+INSERT INTO ROLS (Name) VALUES ('Commercial');
+INSERT INTO ROLS (Name) VALUES ('Client');

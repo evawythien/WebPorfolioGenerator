@@ -27,12 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="bin\Debug\netcoreapp2.0\" />
-    <Folder Include="bin\Release\" />
+    <Folder Include="bin\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebPorfolioGenerator.Data\WebPorfolioGenerator.Data.csproj" />
     <ProjectReference Include="..\WebPortfolioGenerator.Domain\WebPortfolioGenerator.Domain.csproj" />
   </ItemGroup>
 
